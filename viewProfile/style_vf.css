@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+	font-family: 'Happiness-Sans-Title';
+	background-color:rgb(255,239,227);
+	margin: 2vh;
+}
+
+.sidebar{
+	background-color: white;
+	width : 50vw;
+	height : 98%;
+	margin: 0 auto;
+	padding : 0px 0px 0px 0px
+}
+
+.header-text{
+	font-size : 30px;
+	text-align: left;
+	padding : 30px 30px 10px 30px;
+}
+
+.whole{
+	display: flex;
+	flex-direction: column;
+}
+
+
+.profile-img-box{
+	float: left;
+	width: 150px;
+	height: 150px;
+	border-radius: 30%;
+	overflow: hidden;
+	margin : 10px 0px 10px 30px;
+}
+
+.profile-img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.profile-box{
+	float: left;
+
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    width: 32vw;
+}
+
+.profile-name{
+	position: relative;
+	text-align : left;
+	font-size : 30px;
+}
+
+.profile-message{
+	position: relative;
+	text-align: left;
+	font-size : 30px;
+	font-family: 'Pretendard-Regular';
+}
+
+.modify-button-box{
+	position: relative;
+	text-align: right;
+	padding : 30px 0px 0px 0px;
+}
+
+.modify-button{
+	text-align: center;
+	padding: 15px 0px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+
+	width: 100px;
+	heigth : 50px;
+}
+
+.idBox{
+	display: flex;
+	flex-direction: row;
+}
+
+.idTitle{
+	padding: 30px 10px 10px 50px;
+	font-size: 20px;
+}
+
+.id{
+	padding: 30px;
+	font-size: 20px;
+	font-family: 'Pretendard-Regular';
+}
+
+.hr{
+
+}
+
+.imgbox{
+	position: relative;
+	padding: 30px 30px 30px 30px;
+}
+
+.imgs{
+	padding: 30px 10px 10px 0px;
+}
