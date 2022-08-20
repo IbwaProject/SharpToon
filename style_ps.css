@@ -1,0 +1,24 @@
+.splash-page{
+	width : 100vw;
+	height: 100vh;
+	position: fixed;
+
+	/*애니메이션 */
+	animation-name : splash_ani;
+	animation-duration: 3s;
+	animation-fill-mode: fowards;
+}
+
+@keyframes splash_ani{
+	0% {
+		opacity : 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+		display: none;
+		z-index: -10;
+	}
+}
