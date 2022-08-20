@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--www.codingflicks.com--> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forgot Password</title>
+	<link href="pwStyle.css" rel="stylesheet">
+</head>
+<body>
+	<div class="form-box">
+		<div class="header-text">
+			Forgot Password?
+		</div>
+	<span>
+      입력하신 이메일로 임시 비밀번호를 발송해 드립니다.<br>
+    </span> 
+    <input placeholder="Your Name" type="text" id="name"> 
+    <input placeholder="Your Id" type="text" id = "id"> 
+    <input placeholder="Your Email Address" type="text" id = "email"> 
+    <button onclick="sendBtn()" id="send">Send</button>
+	</div>
+</body>
+</html>
+
+<script>
+function sendBtn(){
+	var name = document.getElementById("name").value;
+    var id = document.getElementById("id").value;
+    var email = document.getElementById("email").value;
+
+    if(name=="") alert('이름을 입력해주세요.');
+    else if(id=="") alert('아이디를 입력해주세요.');
+    else if(email=="") alert('이메일을 입력해주세요.');
+    else alert('입력하신 이메일로 비밀번호가 발송되었습니다.');
+}
+</script>
+
+<script>
+window.alert = function(message){
+    var button = document.getElementById("send");
+    button.innerHTML = message; 
+}
+</script>

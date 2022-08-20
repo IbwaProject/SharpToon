@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+	font-family: 'Happiness-Sans-Title';
+	background-color:rgb(255,239,227);
+	margin: 2vh;
+}
+
+.sidebar{
+	background-color: white;
+	width : 50vw;
+	height : 98%;
+	margin: 0 auto;
+	padding : 0px 0px 0px 0px
+}
+
+.header-text{
+	font-size : 30px;
+	text-align: left;
+	padding : 40px 30px 10px 30px;
+}
+
+.whole{
+	display: flex;
+	flex-direction: column;
+}
+
+.setting-account{
+	position : relative;
+	float: left;
+    height: 280px;
+    margin: 30px 0px 0px 30px;
+    width: 32vw;
+}
+
+.setting-support{
+	position : relative;
+	float: left;
+    height: 220px;
+    margin: 30px 0px 0px 30px;
+    width: 32vw;
+}
+
+.setting-title{
+	background-color: lightgrey;
+	width : 35vw;
+	position: relative;
+	font-size : 26px;
+	padding : 10px;
+}
+
+.setting-content{
+	position: relative;
+	text-align: left;
+	font-size : 20px;
+	padding-top : 3px;
+	padding-bottom : 3px;
+	font-family: 'Pretendard-Regular';
+}
+
+.setting-content:hover {
+    background-color:#E6EEF2;
+  }

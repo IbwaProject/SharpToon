@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>만화화 옵션 선택</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class = "page">
+	<div class = "left_box">
+		<div class="Photo">
+			<button class = "Photo-Button">사진 업로드</button>
+			<img class="Select-image" id="select-image">
+		</div>
+	</div>
+
+<div class = "main_box">
+	<div class="main_screen">
+		<div class="upper-content">
+		<form>
+			<div class="text-title">만화화</div><br>
+			<input type="radio" name="cartoonize" id="cartoon1" value = "1" onclick="drawImg(this)"><label for="cartoon1"><div class ="select-cartoon"><img src="image/disney.jpg"></label></div>
+			<input type="radio" name="cartoonize" id="cartoon2" value = "2" onclick="drawImg(this)"><label for="cartoon2"><div class ="select-cartoon"><img src="image/ghibli.jpg"></label></div>
+			<input type="radio" name="cartoonize" id="cartoon3" value = "3" onclick="drawImg(this)"><label for="cartoon3"><div class ="select-cartoon"><img src="image/pixar.jpg"></label></div><br>
+		</form>
+		</div>
+	</div>
+</div>
+</div>
+<div class = "button_Bottom">
+	<img class="button_Bottom_img" id="next-image">
+</body>
+</html>
+
+<script>
+function drawImg(obj) {
+	var selectImage = document.getElementById("select-image");
+    var nextImage = document.getElementById("next-image");
+    nextImage.src = "image/button_Bottom_img.png"
+    
+
+    switch(obj.id){
+        case "cartoon1" :
+        	selectImage.src = "image/disney.jpg";
+            break;
+        case "cartoon2" :
+        	selectImage.src = "image/ghibli.jpg";
+            break;
+        case "cartoon3" :
+        	selectImage.src = "image/pixar.jpg";
+            break;
+    }
+}
+</script>
