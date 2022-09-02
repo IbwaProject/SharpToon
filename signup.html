@@ -16,7 +16,7 @@
     <input placeholder="Your Password" type="password" id="pw"> 
     <input placeholder="Check Your Password" type="password" id="repw"> 
     
-    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;">Sign Up</button>
+    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="SignUpBtn()">Sign Up</button>
     <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
 	</div>
 </body>
@@ -28,5 +28,9 @@
     	document.getElementById("id").value=null;
     	document.getElementById("pw").value=null;
     	document.getElementById("repw").value=null;
+	}
+
+	function SignUpBtn(){
+		location.replace('main.html');
 	}
 </script>
