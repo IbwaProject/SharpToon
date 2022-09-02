@@ -11,15 +11,30 @@
 		<div class="header-text">
 			Login Form
 		</div>
-    <input placeholder="Your Email Address" type="text"> 
-    <input placeholder="Your Password" type="password"> 
+    <input placeholder="Your Email Address" type="text" id="id"> 
+    <input placeholder="Your Password" type="password" id="pw"> 
     <input id="terms" type="checkbox"> 
     
     <span>
       <a href="#">Forgot id?</a> &nbsp &nbsp
       <a href="forgotPW.html">Forgot Password?</a>
     </span> 
-    <button>login</button>  
+    <button onclick="LoginBtn()">login</button>  
 	</div>
 </body>
 </html>
+
+<script>
+	function LoginBtn(){
+		var id = document.getElementById("id").value;
+    var pw = document.getElementById("pw").value;
+
+    if(id=="") alert('아이디를 입력해주세요.');
+    else if(pw=="") alert('비밀번호를 입력해주세요.');
+    else if(id=="123"){
+    	if(pw=="123") location.replace('main.html');
+    	else alert('아이디, 비밀번호를 확인해주세요.');
+    }
+    else alert('아이디, 비밀번호를 확인해주세요.');
+	}
+</script>
