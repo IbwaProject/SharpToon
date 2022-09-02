@@ -11,13 +11,22 @@
 		<div class="header-text">
 			Sign Up Form
 		</div>
-    <input placeholder="User name" type="text"> <button>Check</button>
-    <input placeholder="User id" type="text"> <button>Check</button>
-    <input placeholder="Your Password" type="password"> 
-    <input placeholder="Check Your Password" type="password"> 
+    <input placeholder="User name" type="text" id="name"> <button>Check</button>
+    <input placeholder="User id" type="text" id="id"> <button>Check</button>
+    <input placeholder="Your Password" type="password" id="pw"> 
+    <input placeholder="Check Your Password" type="password" id="repw"> 
     
     <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;">Sign Up</button>
-    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;">Reset</button>
+    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
 	</div>
 </body>
 </html>
+
+<script>
+	function ResetBtn(){
+		document.getElementById("name").value=null;
+    	document.getElementById("id").value=null;
+    	document.getElementById("pw").value=null;
+    	document.getElementById("repw").value=null;
+	}
+</script>
