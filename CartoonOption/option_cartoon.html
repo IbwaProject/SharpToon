@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body  onscroll="scroll()">
 	<div class = "page">
-	<div class = "left_box">
+	<div class = "left_box" id="leftBox">
 		<div class="Photo">
 			<button class = "Photo-Button">사진 업로드</button>
 			<img class="Select-image" id="select-image">
@@ -21,16 +21,18 @@
 		<div class="upper-content">
 		<form>
 			<div class="text-title">만화화</div><br>
-			<input type="radio" name="cartoonize" id="cartoon1" value = "1" onclick="drawImg(this)"><label for="cartoon1"><div class ="select-cartoon"><img src="image/disney.jpg"></label></div>
-			<input type="radio" name="cartoonize" id="cartoon2" value = "2" onclick="drawImg(this)"><label for="cartoon2"><div class ="select-cartoon"><img src="image/ghibli.jpg"></label></div>
-			<input type="radio" name="cartoonize" id="cartoon3" value = "3" onclick="drawImg(this)"><label for="cartoon3"><div class ="select-cartoon"><img src="image/pixar.jpg"></label></div><br>
+			<input type="radio" name="cartoonize" id="cartoon1" value = "1" onclick="drawImg(this)"><label for="cartoon1"><div class ="select-cartoon"><img src="image/disney.jpg"></div></label>
+			<input type="radio" name="cartoonize" id="cartoon2" value = "2" onclick="drawImg(this)"><label for="cartoon2"><div class ="select-cartoon"><img src="image/ghibli.jpg"></div></label>
+			<input type="radio" name="cartoonize" id="cartoon3" value = "3" onclick="drawImg(this)"><label for="cartoon3"><div class ="select-cartoon"><img src="image/pixar.jpg"></div></label><br>
 		</form>
 		</div>
 	</div>
 </div>
-</div>
-<div class = "button_Bottom">
+
+<div id = "button_Bottom">
 	<img class="button_Bottom_img" id="next-image">
+</div>
+</div>
 </body>
 </html>
 
@@ -52,5 +54,15 @@ function drawImg(obj) {
         	selectImage.src = "image/pixar.jpg";
             break;
     }
+}
+
+function scroll() {
+  var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  var windowSize = window.innerHeight;
+  var btnBottom = document.getElementById("button_Bottom");
+  var leftbox = document.getElementById("leftBox");
+
+  btnBottom.style.bottom=-nVScroll + 10 +"px";
+  leftbox.style.height = 1311 / windowSize * 100 +"%";
 }
 </script>

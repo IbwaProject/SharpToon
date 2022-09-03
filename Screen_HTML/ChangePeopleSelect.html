@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body onscroll="scroll()">
 	<div class = "page">
-	<div class = "left_box">
+	<div class = "left_box" id="leftBox">
 		<div class="Photo">
 			<button class = "Photo-Button">사진 업로드</button>
 			<img class="Select-image" src="./images/IU.jpg">
@@ -21,16 +21,34 @@
 		<div class="upper-content">
 		<form>
 			<div class="text-title">염색</div><br>
-			<label><input type="radio" name="face_expression" value = "2"> <img class = "imgs" src="./images/IU_1.png"></label><br>
-			<label><input type="radio" name="face_expression" value = "3"> <img class = "imgs" src="./images/IU_2.png"></label><br>
-			<label><input type="radio" name="face_expression" value = "4"> <img class = "imgs" src="./images/IU_3.png"></label><br>
+			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(this)"> <img class = "imgs" src="./images/IU_1.png"></label><br>
+			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(this)"> <img class = "imgs" src="./images/IU_2.png"></label><br>
+			<label><input type="radio" name="face_expression" value = "4" onclick="drawImg(this)"> <img class = "imgs" src="./images/IU_3.png"></label><br>
 		</form>
 		</div>
 	</div>
 </div>
 </div>
 
-<div class = "button_Bottom">
-	<img class="button_Bottom_img" src="./images/button_Bottom_img.png">
+<div id = "button_Bottom">
+	<img class="button_Bottom_img" id="next-image">
 </body>
 </html>
+
+
+<script>
+function drawImg(obj) {
+    var nextImage = document.getElementById("next-image");
+    nextImage.src = "images/button_Bottom_img.png"
+}
+
+function scroll() {
+  var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  var windowSize = window.innerHeight;
+  var btnBottom = document.getElementById("button_Bottom");
+  var leftbox = document.getElementById("leftBox");
+
+  btnBottom.style.bottom=-nVScroll + 10 +"px";
+  leftbox.style.height = 1311 / windowSize * 100 +"%";
+}
+</script>

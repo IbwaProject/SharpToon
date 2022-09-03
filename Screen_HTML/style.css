@@ -17,7 +17,6 @@ body{
     width: 980px;
     height: 100%;
     border-radius: 0.5%;
-
     display: flex;
 }
 
@@ -94,7 +93,7 @@ body{
 	margin-bottom : 20px;
 }
 
-.button_Bottom{
+#button_Bottom{
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
