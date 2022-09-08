@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Main</title>
-<link href="../static/style2.css" rel="stylesheet">
+<link href="../static/css/style2.css" rel="stylesheet">
 <style>
 
 .container {
@@ -94,27 +94,27 @@
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
           <div class="numbertext">1 / 5</div>
-          <img src="../images/image1.jpg" style="width:100%">
+          <img src="{{url_for('static', filename = 'images/image1.jpg')}}" style="width:100%">
         </div>
   
         <div class="mySlides fade">
           <div class="numbertext">2 / 5</div>
-          <img src="../images/image2.jpg" style="width:100%">
+          <img src="{{url_for('static', filename = 'images/image2.jpg')}}" style="width:100%">
         </div>
   
         <div class="mySlides fade">
           <div class="numbertext">3 / 5</div>
-          <img src="../images/image3.jpg" style="width:100%">
+          <img src="{{url_for('static', filename = 'images/image3.jpg')}}" style="width:100%">
         </div>
   
         <div class="mySlides fade">
           <div class="numbertext">4 / 5</div>
-          <img src="../images/image4.jpg" style="width:100%">
+          <img src="{{url_for('static', filename = 'images/image4.jpg')}}" style="width:100%">
         </div>
   
         <div class="mySlides fade">
           <div class="numbertext">5 / 5</div>
-          <img src="../images/image5.jpg" style="width:100%">
+          <img src="{{url_for('static', filename = 'images/image5.jpg')}}" style="width:100%">
         </div>
   
         <!-- Next and previous buttons -->
@@ -135,12 +135,12 @@
       <div class="content">
         <div class="row">
             <div class="cell" style="width: 300px;">
-                <img src="../images/image6.jpg" width="300px" height="300px"/>
+                <img src="{{url_for('static', filename = 'images/image6.jpg')}}" width="300px" height="300px"/>
                 <div class="bottom-right2"><a href="./ChangePeopleSelect.html"><i>>> Change Facial Expression</i></a></div>
             </div>
 
             <div class="cell" style="width: 300px;">
-                <img src="../images/image7.jpg" width="300px" height="300px" />
+                <<img src="{{url_for('static', filename = 'images/image7.jpg')}}" width="300px" height="300px"/>
                 <div class="bottom-right1"><a href="./option_cartoon.html"><i>>> Cartoonization</i></a></div>
             </div>
 
