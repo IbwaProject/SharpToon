@@ -12,7 +12,7 @@
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
 			<button class = "Photo-Button">사진 업로드</button>
-			<img class="Select-image" src="../images/IU_Screen.jpg">
+			<img class="Select-image" src="{{url_for('static', filename = 'images/IU_Screen.jpg')}}">
 		</div>
 	</div>
 
@@ -21,9 +21,9 @@
 		<div class="upper-content">
 		<form>
 			<div class="text-title">염색</div><br>
-			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(this)"> <img class = "imgs" src="../images/IU_1.png"></label><br>
-			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(this)"> <img class = "imgs" src="../images/IU_2.png"></label><br>
-			<label><input type="radio" name="face_expression" value = "4" onclick="drawImg(this)"> <img class = "imgs" src="../images/IU_3.png"></label><br>
+			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_1.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_2.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "4" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_3.png')}}"></label><br>
 		</form>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 <script>
 function drawImg(obj) {
     var nextImage = document.getElementById("next-image");
-    nextImage.src = "../images/button_Bottom_img.png"
+    nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
 }
 
 function scroll() {
