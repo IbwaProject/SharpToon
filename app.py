@@ -10,6 +10,10 @@ def MainSplash():
 @app.route('/main')
 def main():
    return render_template('main.html')
+
+@app.route('/option_cartoon')
+def option_cartoon():
+   return render_template('option_cartoon.html')
    
 ## 웹에서 사용할 APIs 
 
