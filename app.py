@@ -29,6 +29,26 @@ def option_hair():
 @app.route('/option_cartoon')
 def option_cartoon():
    return render_template('option_cartoon.html')
+
+@app.route('/result')
+def result():
+   return render_template('result.html')
+
+@app.route('/select_image')
+def select_image():
+   return render_template('select_image.html')
+
+@app.route('/Settings')
+def Settings():
+   return render_template('Settings.html')
+
+@app.route('/camera')
+def camera():
+   return render_template('camera.html')  
+
+@app.route('/ViewProfile')
+def ViewProfile():
+   return render_template('ViewProfile.html')
    
 ## 웹에서 사용할 APIs 
 
