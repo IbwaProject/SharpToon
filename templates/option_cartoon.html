@@ -11,7 +11,7 @@
 	<div class = "page">
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
-			<button class = "Photo-Button">사진 업로드</button>
+			<button class = "Photo-Button" onClick="location.href='/select_image'">사진 업로드</button>
 			<img class="Select-image" id="select-image">
 		</div>
 	</div>
@@ -30,7 +30,7 @@
 </div>
 
 <div id = "button_Bottom">
-	<img class="button_Bottom_img" id="next-image" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}">
+	<button class = "button=Bottom" onClick="location.href='/select_image'"><img class="button_Bottom_img" id="next-image" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}"></button>
 </div>
 </div>
 </body>
