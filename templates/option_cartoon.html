@@ -21,16 +21,16 @@
 		<div class="upper-content">
 		<form>
 			<div class="text-title">만화화</div><br>
-			<input type="radio" name="cartoonize" id="cartoon1" value = "1" onclick="drawImg(this)"><label for="cartoon1"><div class ="select-cartoon"><img src="../images/disney.jpg"></div></label>
-			<input type="radio" name="cartoonize" id="cartoon2" value = "2" onclick="drawImg(this)"><label for="cartoon2"><div class ="select-cartoon"><img src="../images/ghibli.jpg"></div></label>
-			<input type="radio" name="cartoonize" id="cartoon3" value = "3" onclick="drawImg(this)"><label for="cartoon3"><div class ="select-cartoon"><img src="../images/pixar.jpg"></div></label><br>
+			<input type="radio" name="cartoonize" id="cartoon1" value = "1" onclick="drawImg(this)"><label for="cartoon1"><div class ="select-cartoon"><img src="{{url_for('static', filename = 'images/disney.jpg')}}"></div></label>
+			<input type="radio" name="cartoonize" id="cartoon2" value = "2" onclick="drawImg(this)"><label for="cartoon2"><div class ="select-cartoon"><img src="{{url_for('static', filename = 'images/ghibli.jpg')}}"></div></label>
+			<input type="radio" name="cartoonize" id="cartoon3" value = "3" onclick="drawImg(this)"><label for="cartoon3"><div class ="select-cartoon"><img src="{{url_for('static', filename = 'images/pixar.jpg')}}"></div></label><br>
 		</form>
 		</div>
 	</div>
 </div>
 
 <div id = "button_Bottom">
-	<img class="button_Bottom_img" id="next-image">
+	<img class="button_Bottom_img" id="next-image" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}">
 </div>
 </div>
 </body>
@@ -40,18 +40,18 @@
 function drawImg(obj) {
 	var selectImage = document.getElementById("select-image");
     var nextImage = document.getElementById("next-image");
-    nextImage.src = "../images/button_Bottom_img.png"
+    //nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
     
 
     switch(obj.id){
         case "cartoon1" :
-        	selectImage.src = "../images/disney.jpg";
+        	selectImage.src = "{{url_for('static', filename = 'images/disney.jpg')}}";
             break;
         case "cartoon2" :
-        	selectImage.src = "../images/ghibli.jpg";
+        	selectImage.src = "{{url_for('static', filename = 'images/ghibli.jpg')}}";
             break;
         case "cartoon3" :
-        	selectImage.src = "../images/pixar.jpg";
+        	selectImage.src = "{{url_for('static', filename = 'images/pixar.jpg')}}";
             break;
     }
 }
