@@ -25,10 +25,22 @@
                 <input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
                 <p class="preview-title">preview</p>
                 <div class="preview" id="preview"></div>
-                <button class = "Photo-Button">선택하기</button>
-                <button class = "Photo-Button" onClick="location.href='/select_image'">사진찍기</button>
+                <button class = "Photo-Button" onClick="location.href='/run_model'">선택하기</button>
+                <button class = "Photo-Button">사진찍기</button>
+
+				<script src="../static/select_image.js"></script>
             </main>
         </div>
 	</div>
 </body>
 </html>
+
+
+<script>
+	function makeResult() {
+		var img = document.getElementById("preview");
+		if(img.firstChild != null) {
+			
+		}
+	}
+</script>
