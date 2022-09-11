@@ -11,13 +11,15 @@
 		<div class="header-text">
 			Sign Up Form
 		</div>
-    <input placeholder="User name" type="text" id="name"> <button>Check</button>
-    <input placeholder="User id" type="text" id="id"> <button>Check</button>
-    <input placeholder="Your Password" type="password" id="pw"> 
-    <input placeholder="Check Your Password" type="password" id="repw"> 
+		<form method = "POST">
+    		<input type="text" placeholder="User name"  id="name" name = "name"> <!--<button>Check</button>-->
+    		<input placeholder="User id" type="text" id="userid" name = "userid"> <!--<button>Check</button>-->
+    		<input placeholder="Your Password" type="password" id="password" name = "password"> 
+    		<input placeholder="Check Your Password" type="password" id="password_2" name = "password_2"> 
     
-    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="SignUpBtn()">Sign Up</button>
-    <button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
+    		<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" type="submit">Sign Up</button>
+    		<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
+		</form>
 	</div>
 </body>
 </html>
@@ -28,9 +30,5 @@
     	document.getElementById("id").value=null;
     	document.getElementById("pw").value=null;
     	document.getElementById("repw").value=null;
-	}
-
-	function SignUpBtn(){
-		location.href = '/main';
 	}
 </script>
