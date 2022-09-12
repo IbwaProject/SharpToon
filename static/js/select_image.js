@@ -1,5 +1,6 @@
 var input = document.getElementById("input");
 var initLabel = document.getElementById("label");
+var imgURL;
 
 input.addEventListener("change", (event) => {
   const files = changeEvent(event);
@@ -56,7 +57,6 @@ function changeEvent(event){
 
 function handleUpdate(fileList){
   const preview = document.getElementById("preview");
-
   fileList.forEach((file) => {
     const reader = new FileReader();
     reader.addEventListener("load", (event) => {
@@ -64,12 +64,25 @@ function handleUpdate(fileList){
         className: "embed-img",
         src: event.target?.result,
       });
+      var a = document.createElement('a');
+      a.download = "imageTemp";
+      a.href = img.src;
+      a.click();
+
+      imgURL = img.src;
       const imgContainer = el("div", { className: "container-img" }, img);
       preview.append(imgContainer);
     });
     reader.readAsDataURL(file);
   });
 };
+
+function makeResult() {
+  var img = document.getElementById("preview");
+  if(img.firstChild != null) {
+    console.log(imgURL);
+  }
+}
 
 function el(nodeName, attributes, ...children) {
   const node =

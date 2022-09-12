@@ -4,7 +4,6 @@ import argparse
 #from StarGAN import data_loader as data_loader
 from StarGAN.data_loader import get_loader
 from StarGAN.solver import Solver
-#from data_loader import get_loader
 from torch.backends import cudnn
 
 
@@ -17,7 +16,7 @@ def main():
     config = argparse.ArgumentParser()
     config.c_dim = 5
     config.c2_dim = 8
-    config.celeba_crop_size = 178
+    config.celeba_crop_size = 256
     config.rafd_crop_size = 256
     config.image_size = 128
     config.g_conv_dim = 64
@@ -46,13 +45,13 @@ def main():
     config.mode = 'test'
     config.use_tensorboard = True
 
-    config.celeba_image_dir = 'StarGAN/data/custom/images'
+    config.celeba_image_dir = 'static/images/input'
     config.attr_path = 'StarGAN/data/list_attr_celeba_custom.txt'
     config.rafd_image_dir = 'StarGAN/data/RaFD/train'
     config.model_save_dir = 'StarGAN/stargan_celeba_128/models'
-    config.result_dir = 'StarGAN/stargan_celeba_128/results'
-    config.log_dir = 'StarGAN/stargan/logs'
-    config.sample_dir = 'StarGAN/stargan/samples'
+    config.result_dir = 'static/images/result'
+    config.log_dir = 'StarGAN/stargan_celeba_128/logs'
+    config.sample_dir = 'StarGAN/stargan_celeba_128/samples'
 
     config.log_step = 10
     config.sample_step = 1000
@@ -73,7 +72,7 @@ def main():
     f = open(config.attr_path, 'w')
     f.write("1\n")
     f.write("Black_Hair Blond_Hair Brown_Hair Male Young\n")
-    f.write(str(file_list[0])+"  -1 -1 -1 -1  1")
+    f.write(str(file_list[0])+"  1 -1 -1 -1  1")
     f.close()
 
     # Data loader.

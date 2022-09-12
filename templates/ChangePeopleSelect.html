@@ -12,7 +12,8 @@
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
 			<button class = "Photo-Button" onClick="location.href='/select_image'">사진 업로드</button>
-			<img class="Select-image" src="{{url_for('static', filename = 'images/IU_Screen.jpg')}}">
+			<!--img class="Select-image" src=""-->
+			<img class="Select-image" id="selectImg">
 		</div>
 	</div>
 
@@ -30,17 +31,34 @@
 </div>
 </div>
 
+<!--button class = "button_Bottom" id = "button_Bottom"><img class="button_Bottom_img" id="next-image"></button-->
 <div id = "button_Bottom">
-	<button class = "button=Bottom" onClick="location.href='/result'"><img class="button_Bottom_img" id="next-image" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}"></button>
-	//<img class="button_Bottom_img" id="next-image">
+<img class="button_Bottom_img" id="next-image"></img>
+</div>
 </body>
 </html>
 
 
 <script>
+window.onload = function() {
+	var selectImage = document.getElementById("selectImg");
+	var nextImage = document.getElementById("next-image");
+
+	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}"}
+	catch{selectImage.src=null}; //수정 필요
+	console.log(selectImage.src);
+}
+
 function drawImg(obj) {
     var nextImage = document.getElementById("next-image");
-    nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
+	var selectImage = document.getElementById("selectImg");
+    nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
+	
+	if(selectImage.src != null) {
+		nextImage.addEventListener("click", function() {
+			location.href='/run_model';
+		});
+	}
 }
 
 function scroll() {

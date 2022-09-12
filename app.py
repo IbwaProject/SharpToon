@@ -88,7 +88,7 @@ def run_model():
    #exec(open("StarGAN/main.py").read())
    #input = "--mode test --dataset CelebA --image_size 128 --c_dim 5 --selected_attrs Black_Hair Blond_Hair Brown_Hair Male Young --celeba_image_dir data/custom/images --attr_path data/list_attr_celeba_custom.txt --model_save_dir='stargan_celeba_128/models' --result_dir='stargan_celeba_128/results'"
    mainPy.main()
-   return render_template('main.html')
+   return render_template('result.html')
    
 ## 웹에서 사용할 APIs 
 
