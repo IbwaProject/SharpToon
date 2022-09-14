@@ -4,7 +4,11 @@ from flask import Flask, render_template, jsonify, request, redirect
 #로그인, 회원가입 관련
 from flask_sqlalchemy import SQLAlchemy
 from models import db
-from models import User
+from models import Fcuser
+from flask import session #세션
+
+from flask_wtf.csrf import CSRFProtect
+from forms import RegisterForm, LoginForm
 
 #StarGAN
 from StarGAN import model
@@ -20,40 +24,43 @@ def MainSplash():
 
 @app.route('/main')
 def main():
-   return render_template('main.html')
+   userid = session.get('userid', None)
+   username = session.get('username')
+   return render_template('main.html', userid=userid, username=username)
 
 @app.route('/forgotPW')
 def forgotPW():
    return render_template('forgotPW.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-   return render_template('login.html')
+   form = LoginForm()
+   if form.validate_on_submit():
+      session['userid'] = form.data.get('userid')
+      session['username'] = form.data.get('username')
+      return redirect('/main')
+   return render_template('login.html', form=form)
+
+@app.route('/logout', methods=['GET'])
+def logout():
+   session.pop('userid', None)
+   return redirect('/main')
 
 #회원가입
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
-   if request.method == 'GET':
-      return render_template('signup.html')
-   else :
-      name = request.form.get('name')
-      userid = request.form.get('userid')
-      password = request.form.get('password')
-      password_2 = request.form.get('password_2')
+   form = RegisterForm()
+   if form.validate_on_submit() :
+      fcuser = Fcuser()
+      fcuser.userid = form.data.get('userid')
+      fcuser.username = form.data.get('username')
+      fcuser.password = form.data.get('password')
 
-      if not(name and userid and password and password_2) : 
-         return "모든 정보를 입력해주세요"
-      elif password != password_2 : 
-         return "비밀번호가 일치하지 않습니다."
-      else : 
-         usertable=User() #user_table 클래스
-         usertable.name = name
-         usertable.userid = userid
-         usertable.password = password
-            
-         db.session.add(usertable)
-         db.session.commit()
-         return redirect('/main')
+      db.session.add(fcuser)
+      db.session.commit()
+      return redirect('/main')
+   
+   return render_template('signup.html', form=form)
 
 @app.route('/option_hair')
 def option_hair():
@@ -94,15 +101,18 @@ def run_model():
 
 ## 서버 연결
 if __name__ == '__main__':
-   #데이터베이스
+      #데이터베이스
       basedir = os.path.abspath(os.path.dirname(__file__)) #현재 파일이 있는 디렉토리 절대 경로
       dbfile = os.path.join(basedir, 'db.sqlite') #데이터베이스 파일을 만든다
 
       app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + dbfile
       app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True #사용자에게 정보 전달완료하면 teadown. 그 때마다 커밋=DB반영
       app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #추가 메모리를 사용하므로 꺼둔다
+      app.config['SECRET_KEY'] = '123'
 
-#    db = SQLAlchemy() #SQLAlchemy를 사용해 데이터베이스 저장
+      csrf = CSRFProtect()
+      csrf.init_app(app)
+
       db.init_app(app) #app설정값 초기화
       db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
       db.create_all() #DB생성

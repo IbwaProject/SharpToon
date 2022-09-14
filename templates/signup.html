@@ -12,12 +12,18 @@
 			Sign Up Form
 		</div>
 		<form method = "POST">
-    		<input type="text" placeholder="User name"  id="name" name = "name"> <!--<button>Check</button>-->
-    		<input placeholder="User id" type="text" id="userid" name = "userid"> <!--<button>Check</button>-->
+			{{form.csrf_token}}
+			{{form.userid(id="userid", placeholder="아이디")}}
+			{{form.username(id="username", placeholder="사용자 이름")}}
+			{{form.password(id="password", placeholder="비밀번호")}}
+			{{form.re_password(id="re_password", placeholder="비밀번호 확인")}}
+
+    		<!--<input type="text" placeholder="User name"  id="name" name = "name"> <<button>Check</button>-->
+    		<!--<input placeholder="User id" type="text" id="userid" name = "userid"> <button>Check</button>
     		<input placeholder="Your Password" type="password" id="password" name = "password"> 
-    		<input placeholder="Check Your Password" type="password" id="password_2" name = "password_2"> 
-    
-    		<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" type="submit">Sign Up</button>
+    		<input placeholder="Check Your Password" type="password" id="password_2" name = "password_2"> -->
+    		
+			<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" type="submit">Sign Up</button>
     		<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
 		</form>
 	</div>
