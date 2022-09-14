@@ -16,7 +16,7 @@ def main():
     config = argparse.ArgumentParser()
     config.c_dim = 5
     config.c2_dim = 8
-    config.celeba_crop_size = 256
+    config.celeba_crop_size = 128
     config.rafd_crop_size = 256
     config.image_size = 128
     config.g_conv_dim = 64
