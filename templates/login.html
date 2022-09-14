@@ -6,35 +6,32 @@
 	<title>Login</title>
 	<link href="../static/css/style3.css" rel="stylesheet">
 </head>
+
 <body>
 	<div class="form-box">
+    <form method="POST" >  
 		<div class="header-text">
 			Login Form
 		</div>
-    <input placeholder="Your Email Address" type="text" id="id"> 
-    <input placeholder="Your Password" type="password" id="pw"> 
-    <input id="terms" type="checkbox"> 
     
+    {{form.csrf_token}}
+    {{form.userid(id="userid", placeholder="Your Id")}}
+    {%if form.password.errors%}  
+    <!-- 로그인 실패시 errors/ password필드의 모든 에러를 갖고있다. -->
+    {{form.password.errors.0}}
+    <!--0 : 첫번째 에러메시지를 출력 하겠다 라는 뜻  -->
+    {%endif%}
+    {{form.password(id="pw", placeholder="Your Password")}}
+    <!--<input placeholder="Your Email Address" type="text" id="id"> 
+    <input placeholder="Your Password" type="password" id="pw"> 
+    <input id="terms" type="checkbox"> -->
+
     <span>
       <a href="#">Forgot id?</a> &nbsp &nbsp
       <a href="/forgotPW">Forgot Password?</a>
     </span> 
-    <button onclick="LoginBtn()">login</button>  
+    <button type="submit">login</button> 
+    </form>
 	</div>
-</body>
+  </body>
 </html>
-
-<script>
-	function LoginBtn(){
-	var id = document.getElementById("id").value;
-    var pw = document.getElementById("pw").value;
-
-    if(id=="") alert('아이디를 입력해주세요.');
-    else if(pw=="") alert('비밀번호를 입력해주세요.');
-    else if(id=="123"){
-    	if(pw=="123") location.href = '/main';
-    	else alert('아이디, 비밀번호를 확인해주세요.');
-    }
-    else alert('아이디, 비밀번호를 확인해주세요.');
-	}
-</script>

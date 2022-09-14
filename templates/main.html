@@ -140,14 +140,19 @@
             </div>
 
             <div class="cell" style="width: 300px;">
-                <<img src="{{url_for('static', filename = 'images/image7.jpg')}}" width="300px" height="300px"/>
+                <img src="{{url_for('static', filename = 'images/image7.jpg')}}" width="300px" height="300px"/>
                 <div class="bottom-right1"><a href="/option_cartoon"><i>>> Cartoonization</i></a></div>
             </div>
 
             <div class="side" style="width: 500px;">
                 <div class="btn">
+                    {%if userid%}
+                    <a href="/ViewProfile">프로필</a>
+                    <a href="/logout">로그아웃</a>
+                    {%else%}
                     <button class="button" onClick="location.href='/login'">Login</button>    
                     <button class="button" onClick="location.href='/signup'">Sign Up</button> 
+                    {%endif%}
                 </div>
             </div>
         </div>

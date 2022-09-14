@@ -8,7 +8,7 @@ from models import Fcuser
 from flask import session #세션
 
 from flask_wtf.csrf import CSRFProtect
-from forms import RegisterForm
+from forms import RegisterForm, LoginForm
 
 #StarGAN
 from StarGAN import model
@@ -24,15 +24,27 @@ def MainSplash():
 
 @app.route('/main')
 def main():
-   return render_template('main.html')
+   userid = session.get('userid', None)
+   username = session.get('username')
+   return render_template('main.html', userid=userid, username=username)
 
 @app.route('/forgotPW')
 def forgotPW():
    return render_template('forgotPW.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-   return render_template('login.html')
+   form = LoginForm()
+   if form.validate_on_submit():
+      session['userid'] = form.data.get('userid')
+      session['username'] = form.data.get('username')
+      return redirect('/main')
+   return render_template('login.html', form=form)
+
+@app.route('/logout', methods=['GET'])
+def logout():
+   session.pop('userid', None)
+   return redirect('/main')
 
 #회원가입
 @app.route('/signup', methods = ['GET', 'POST'])
