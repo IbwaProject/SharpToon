@@ -35,6 +35,10 @@ def main():
    username = session.get('username')
    return render_template('main.html', userid=userid, username=username)
 
+@app.route('/changePW')
+def changePW() :
+   return render_template('changePW.html')
+
 @app.route('/forgotPW')
 def forgotPW():
    return render_template('forgotPW.html')
