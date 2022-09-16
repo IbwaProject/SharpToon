@@ -9,7 +9,7 @@ from models import Fcuser
 from flask import session #세션
 
 from flask_wtf.csrf import CSRFProtect
-from forms import RegisterForm, LoginForm
+from forms import ChangePWForm, RegisterForm, LoginForm
 
 #StarGAN
 from StarGAN import model
@@ -35,9 +35,17 @@ def main():
    username = session.get('username')
    return render_template('main.html', userid=userid, username=username)
 
-@app.route('/changePW')
+@app.route('/changePW', methods = ['GET', 'POST'])
 def changePW() :
-   return render_template('changePW.html')
+   form = ChangePWForm()
+   if form.validate_on_submit() :
+      userid = session.get('userid', None)
+      fcuser = Fcuser()
+      user = fcuser.query.filter_by(userid=userid).first()
+      user.password = form.data.get('password')
+      db.session.commit()
+      return redirect('/Settings')
+   return render_template('changePW.html', form=form)
 
 @app.route('/forgotPW')
 def forgotPW():
