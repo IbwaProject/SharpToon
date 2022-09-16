@@ -2,6 +2,7 @@ from StarGAN.model import Generator
 from StarGAN.model import Discriminator
 from torch.autograd import Variable
 from torchvision.utils import save_image
+from PIL import Image
 import torch
 import torch.nn.functional as F
 import numpy as np
@@ -547,6 +548,15 @@ class Solver(object):
                 x_concat = torch.cat(x_fake_list, dim=3)
                 result_path = os.path.join(self.result_dir, '{}-images.jpg'.format(i+1))
                 save_image(self.denorm(x_concat.data.cpu()), result_path, nrow=1, padding=0)
+                image = Image.open(self.result_dir+"/1-images.jpg")
+                imgOrigin=image.crop((128*0,0,128*1,128))
+                imgOrigin.save(self.result_dir+"/imgOrigin.jpg")
+                imgBlack=image.crop((128*1,0,128*2,128))
+                imgBlack.save(self.result_dir+"/imgBlack.jpg")
+                imgBlond=image.crop((128*2,0,128*3,128))
+                imgBlond.save(self.result_dir+"/imgBlond.jpg")
+                imgBrown=image.crop((128*3,0,128*4,128))
+                imgBrown.save(self.result_dir+"/imgBrown.jpg")
                 print('Saved real and fake images into {}...'.format(result_path))
 
     def test_multi(self):

@@ -1,4 +1,5 @@
 import os #디렉토리 절대 경로
+import shutil
 from flask import Flask, render_template, jsonify, request, redirect
 
 #로그인, 회원가입 관련
@@ -20,6 +21,12 @@ app = Flask(__name__)
 ## HTML을 주는 부분
 @app.route('/')
 def MainSplash():
+   celeba_image_dir = 'static/images/input'
+   result_dir = 'static/images/result'
+   if os.path.exists(celeba_image_dir) :
+      shutil.rmtree(celeba_image_dir)
+   if os.path.exists(result_dir) :
+      shutil.rmtree(result_dir)
    return render_template('MainSplash.html')
 
 @app.route('/main')

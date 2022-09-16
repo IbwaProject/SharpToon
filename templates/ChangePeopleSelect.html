@@ -20,11 +20,11 @@
 <div class = "main_box">
 	<div class="main_screen">
 		<div class="upper-content">
-		<form>
+		<form method = "post">
 			<div class="text-title">염색</div><br>
-			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_1.png')}}"></label><br>
-			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_2.png')}}"></label><br>
-			<label><input type="radio" name="face_expression" value = "4" onclick="drawImg(this)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_3.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "1" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_1.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_2.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_3.png')}}"></label><br>
 		</form>
 		</div>
 	</div>
@@ -33,6 +33,7 @@
 
 <!--button class = "button_Bottom" id = "button_Bottom"><img class="button_Bottom_img" id="next-image"></button-->
 <div id = "button_Bottom">
+<!--input type="submit" value="전송" id="next-image"-->
 <img class="button_Bottom_img" id="next-image"></img>
 </div>
 </body>
@@ -49,14 +50,15 @@ window.onload = function() {
 	console.log(selectImage.src);
 }
 
-function drawImg(obj) {
+function drawImg(event) {
     var nextImage = document.getElementById("next-image");
 	var selectImage = document.getElementById("selectImg");
     nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
 	
 	if(selectImage.src != null) {
 		nextImage.addEventListener("click", function() {
-			location.href='/run_model';
+			let hairOption = event.target.value;
+            window.location.href = "/run_model?option=" + hairOption;
 		});
 	}
 }
