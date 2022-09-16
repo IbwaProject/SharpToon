@@ -25,3 +25,7 @@ class LoginForm(FlaskForm):
                 username = fcuser.username
     userid = StringField('userid', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired(), UserPassword()]) 
+
+class ChangePWForm(FlaskForm):
+    password = PasswordField('password', validators=[DataRequired(), EqualTo('re_password')])
+    re_password = PasswordField('re_password', validators=[DataRequired()])
