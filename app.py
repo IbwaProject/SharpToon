@@ -81,6 +81,10 @@ def signup():
    
    return render_template('signup.html', form=form)
 
+@app.route('/balloon_example')
+def balloon_example():
+   return render_template('BalloonExample.html')
+
 @app.route('/option_hair')
 def option_hair():
    return render_template('ChangePeopleSelect.html')
