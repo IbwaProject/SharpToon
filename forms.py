@@ -29,3 +29,7 @@ class LoginForm(FlaskForm):
 class ChangePWForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired(), EqualTo('re_password')])
     re_password = PasswordField('re_password', validators=[DataRequired()])
+
+class ChangeProfile(FlaskForm):
+    username = StringField('username', validators=[DataRequired()])
+    stateM = StringField('stateM', validators=[DataRequired()])

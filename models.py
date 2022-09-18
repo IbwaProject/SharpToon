@@ -8,3 +8,4 @@ class Fcuser(db.Model):
     password = db.Column(db.String(64))     #패스워드를 받아올 문자열길이 
     userid = db.Column(db.String(32))       #이하 위와 동일
     username = db.Column(db.String(8))
+    stateM = db.Column(db.String(64))

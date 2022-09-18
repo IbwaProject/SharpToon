@@ -9,7 +9,7 @@ from models import Fcuser
 from flask import session #세션
 
 from flask_wtf.csrf import CSRFProtect
-from forms import ChangePWForm, RegisterForm, LoginForm
+from forms import ChangePWForm, RegisterForm, LoginForm, ChangeProfile
 
 #StarGAN
 from StarGAN import model
@@ -74,6 +74,7 @@ def signup():
       fcuser.userid = form.data.get('userid')
       fcuser.username = form.data.get('username')
       fcuser.password = form.data.get('password')
+      fcuser.stateM = "상태메세지를 입력해주세요"
 
       db.session.add(fcuser)
       db.session.commit()
@@ -107,7 +108,25 @@ def camera():
 
 @app.route('/ViewProfile')
 def ViewProfile():
-   return render_template('ViewProfile.html')
+   fcuser = Fcuser()
+   userid = session.get('userid', None)
+   user = fcuser.query.filter_by(userid=userid).first()
+   username = user.username
+   stateM = user.stateM
+   return render_template('ViewProfile.html', userid=userid, username=username, stateM=stateM)
+
+@app.route('/changeProfile', methods = ['GET', 'POST'])
+def changeProfile():
+   form = ChangeProfile()
+   if form.validate_on_submit():
+      fcuser = Fcuser()
+      userid = session.get('userid', None)
+      user = fcuser.query.filter_by(userid=userid).first()
+      user.username = form.data.get('username')
+      user.stateM = form.data.get('stateM')
+      db.session.commit()
+      return redirect('/ViewProfile')
+   return render_template('changeProfile.html', form=form)
 
 @app.route('/run_model')
 def run_model():
