@@ -11,23 +11,27 @@
 	<div class = "sidebar">
 		<div class = "header-text">기본 프로필 관리</div>
 		<div class = "whole">
-		<form method="POST" >  
-			{{form.csrf_token}}
+		
 			<div class = "profile">
-				<div class = "profile-img-box"> <img float = "center" class = "profile-img" src="{{url_for('static', filename = 'images/IU_profile.jpg')}}"></div>
+				<div class = "profile-img-box"> <img float = "center" class = "profile-img" src="{{url_for('static', filename = profileIMG)}}"></div>
+				<form action = "http://localhost:5000/fileUpload" method = "POST" enctype = "multipart/form-data">
+					<input type = "file" name = "file" />
+					<input type = "submit"/>
+				</form>
 				<div class = "profile-box">
+					<form method="POST" >  
+					{{form.csrf_token}}
 					닉네임
 					{{form.username(id="username")}}
 					<br>
 					상태 메세지
 					{{form.stateM(id="stateM")}}
 					<br>
-					<!--<div class = "modify-button-box">-->
 						<button class = "modify-button" type="submit">완료</button>
-					<!--</div>-->
+					</form>
 				</div>
 			</div>
-		</form>
+		
 
 		<hr width="100%">
 	</div>

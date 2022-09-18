@@ -1,6 +1,7 @@
 import os #디렉토리 절대 경로
 import shutil
 from flask import Flask, render_template, jsonify, request, redirect
+from werkzeug.utils import secure_filename
 
 #로그인, 회원가입 관련
 from flask_sqlalchemy import SQLAlchemy
@@ -28,6 +29,18 @@ def MainSplash():
    if os.path.exists(result_dir) :
       shutil.rmtree(result_dir)
    return render_template('MainSplash.html')
+
+@app.route('/fileUpload', methods = ['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+      # userid = session.get('userid', None)
+      f = request.files['file']
+      # 저장할 경로 + 파일명
+      #fcuser = Fcuser()
+      #user = fcuser.query.filter_by(userid=userid).first()
+      #user.profileIMG = f.filename
+      #db.session.commit()
+      return redirect('/main')
 
 @app.route('/main')
 def main():
@@ -75,6 +88,7 @@ def signup():
       fcuser.username = form.data.get('username')
       fcuser.password = form.data.get('password')
       fcuser.stateM = "상태메세지를 입력해주세요"
+      fcuser.profileIMG = "images/IU_profile.jpg"
 
       db.session.add(fcuser)
       db.session.commit()
@@ -113,20 +127,22 @@ def ViewProfile():
    user = fcuser.query.filter_by(userid=userid).first()
    username = user.username
    stateM = user.stateM
-   return render_template('ViewProfile.html', userid=userid, username=username, stateM=stateM)
+   profileIMG=user.profileIMG
+   return render_template('ViewProfile.html', userid=userid, username=username, stateM=stateM, profileIMG=profileIMG)
 
 @app.route('/changeProfile', methods = ['GET', 'POST'])
 def changeProfile():
    form = ChangeProfile()
+   fcuser = Fcuser()
+   userid = session.get('userid', None)
+   user = fcuser.query.filter_by(userid=userid).first()
+   profileIMG = user.profileIMG
    if form.validate_on_submit():
-      fcuser = Fcuser()
-      userid = session.get('userid', None)
-      user = fcuser.query.filter_by(userid=userid).first()
       user.username = form.data.get('username')
       user.stateM = form.data.get('stateM')
       db.session.commit()
       return redirect('/ViewProfile')
-   return render_template('changeProfile.html', form=form)
+   return render_template('changeProfile.html', form=form, profileIMG=profileIMG)
 
 @app.route('/run_model')
 def run_model():

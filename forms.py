@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from models import Fcuser
 from wtforms import StringField
-from wtforms import PasswordField
+from wtforms import PasswordField, FileField
 from wtforms.validators import DataRequired, EqualTo
 
 class RegisterForm(FlaskForm):
