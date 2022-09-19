@@ -30,18 +30,6 @@ def MainSplash():
       shutil.rmtree(result_dir)
    return render_template('MainSplash.html')
 
-@app.route('/fileUpload', methods = ['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-      # userid = session.get('userid', None)
-      f = request.files['file']
-      # 저장할 경로 + 파일명
-      #fcuser = Fcuser()
-      #user = fcuser.query.filter_by(userid=userid).first()
-      #user.profileIMG = f.filename
-      #db.session.commit()
-      return redirect('/main')
-
 @app.route('/main')
 def main():
    userid = session.get('userid', None)
@@ -92,7 +80,7 @@ def signup():
       fcuser.username = form.data.get('username')
       fcuser.password = form.data.get('password')
       fcuser.stateM = "상태메세지를 입력해주세요"
-      fcuser.profileIMG = "images/IU_profile.jpg"
+      fcuser.profileIMG = "images/profile.jpg"
 
       db.session.add(fcuser)
       db.session.commit()

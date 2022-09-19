@@ -14,11 +14,16 @@
 		
 			<div class = "profile">
 				<div class = "profile-img-box"> <img float = "center" class = "profile-img" src="{{url_for('static', filename = profileIMG)}}"></div>
-				<form action = "http://localhost:5000/fileUpload" method = "POST" enctype = "multipart/form-data">
-					<input type = "file" name = "file" />
-					<input type = "submit"/>
-				</form>
-				<div class = "profile-box">
+
+				<input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
+					<div class="preview" id="preview"></div>
+					<label class="label" id="label" for="input">
+						<div class="inner" id="inner">드래그하거나 클릭해서 업로드</div>
+						</label>
+						<script src="{{url_for('static', filename='js/profile_image.js')}}"></script>
+
+
+					<div class = "profile-box">
 					<form method="POST" >  
 					{{form.csrf_token}}
 					닉네임
