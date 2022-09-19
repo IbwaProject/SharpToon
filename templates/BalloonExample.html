@@ -5,6 +5,10 @@
 <script type='text/javascript'>
 var img_L = 0;
 var img_T = 0;
+var resize_L = 0;
+var resize_T = 0;
+var img_W = 0;
+var img_H = 0;
 var key = false;
 var targetObj;
 
@@ -19,12 +23,13 @@ window.addEventListener("keyup", (e) => {
 });
 
 function resize() {
-    resize_X=event.x;
-    resize_Y=event.y;
+    resize_X=event.x - resize_L;
+    resize_Y=event.y - resize_T;
+    console.log(resize_L);
     console.log(resize_X);
-    console.log(img_L);
-    targetObj.width=resize_X;
-    targetObj.height=resize_Y;
+    console.log(img_W);
+    targetObj.width=img_W + resize_X;
+    targetObj.height=img_H + resize_Y;
 }
 
 function getLeft(o){
@@ -50,6 +55,10 @@ function startDrag(e, obj){
     var e_obj = window.event? window.event : e;
     img_L = getLeft(obj) - e_obj.clientX;
     img_T = getTop(obj) - e_obj.clientY;
+    img_W = targetObj.width;
+    img_H = targetObj.height;
+    resize_L = e_obj.clientX;
+    resize_T = e_obj.clientY;
     if(key)
         document.onmousemove = resize;
     else document.onmousemove = moveDrag;

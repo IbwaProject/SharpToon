@@ -60,6 +60,10 @@ def changePW() :
       return redirect('/Settings')
    return render_template('changePW.html', form=form)
 
+@app.route('/forgotId')
+def forgotId():
+   return render_template('forgotID.html')
+
 @app.route('/forgotPW')
 def forgotPW():
    return render_template('forgotPW.html')

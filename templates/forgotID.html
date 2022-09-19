@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--www.codingflicks.com--> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forgot Id</title>
+	<link href="../static/css/pwStyle.css" rel="stylesheet">
+</head>
+<body>
+	<div class="form-box">
+		<div class="header-text">
+			Forgot Id?
+		</div>
+	<span>
+      아래 항목을 입력해주세요.<br>
+    </span> 
+    <input placeholder="Your Name" type="text" id="name"> 
+    <input placeholder="Your Email Address" type="text" id = "email"> 
+    <button onclick="sendBtn()" id="send">Send</button>
+	</div>
+</body>
+</html>
+
+<script>
+function sendBtn(){
+	var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+
+    if(name=="") alert('이름을 입력해주세요.');
+    else if(email=="") alert('이메일을 입력해주세요.');
+    else alert('입력하신 이메일로 아이디가 발송되었습니다.');
+}
+</script>
+
+<script>
+window.alert = function(message){
+    var button = document.getElementById("send");
+    button.innerHTML = message; 
+}
+</script>
