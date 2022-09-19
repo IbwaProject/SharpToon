@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from models import Fcuser
 from wtforms import StringField
-from wtforms import PasswordField
+from wtforms import PasswordField, FileField
 from wtforms.validators import DataRequired, EqualTo
 
 class RegisterForm(FlaskForm):
@@ -29,3 +29,7 @@ class LoginForm(FlaskForm):
 class ChangePWForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired(), EqualTo('re_password')])
     re_password = PasswordField('re_password', validators=[DataRequired()])
+
+class ChangeProfile(FlaskForm):
+    username = StringField('username', validators=[DataRequired()])
+    stateM = StringField('stateM', validators=[DataRequired()])

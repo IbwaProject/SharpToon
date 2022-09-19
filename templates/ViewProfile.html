@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>프로필 설정</title>
+	<title>프로필</title>
 	<link rel="stylesheet" href="../static/css/style_vf.css"/>
 </head>
 
@@ -12,19 +12,19 @@
 		<div class = "header-text">기본 프로필 관리</div>
 		<div class = "whole">
 		<div class = "profile">
-			<div class = "profile-img-box"> <img class = "profile-img" src="{{url_for('static', filename = 'images/IU_profile.jpg')}}"></div>
+			<div class = "profile-img-box"> <img class = "profile-img" src="{{url_for('static', filename = profileIMG)}}"></div>
 			<div class = "profile-box">
-				<div class = "profile-name">IU</div>
-				<div class = "profile-message">상태 메세지😋</div>
+				<div class = "profile-name">{{username}}</div>
+				<div class = "profile-message">{{stateM}}</div>
 				<div class = "modify-button-box">
-					<button class = "modify-button">편집</button>
+					<button class = "modify-button" onClick="location.href='/changeProfile'">편집</button>
 				</div>
 			</div>
 		</div>
 
 		<div class="idBox">
 			<div class = "idTitle">아이디</div>
-			<div class = "id">dlwlrma</div>
+			<div class = "id">{{userid}}</div>
 		</div>
 		<hr width="100%">
 
