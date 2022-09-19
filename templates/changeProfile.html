@@ -13,14 +13,18 @@
 		<div class = "whole">
 		
 			<div class = "profile">
-				<div class = "profile-img-box"> <img float = "center" class = "profile-img" src="{{url_for('static', filename = profileIMG)}}"></div>
+				
 
 				<input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
 					<div class="preview" id="preview"></div>
 					<label class="label" id="label" for="input">
-						<div class="inner" id="inner">드래그하거나 클릭해서 업로드</div>
-						</label>
-						<script src="{{url_for('static', filename='js/profile_image.js')}}"></script>
+						<div class="inner" id="inner">
+							<div class = "profile-img-box"> 
+								<img float = "center" class = "profile-img" style = "opacity:1" onmouseover="this.style.opacity='0.5'" onmouseout ="this.style.opacity='1'" src="{{url_for('static', filename = profileIMG)}}">
+							</div>
+						</div>
+					</label>
+					<script src="{{url_for('static', filename='js/profile_image.js')}}"></script>
 
 
 					<div class = "profile-box">

@@ -90,7 +90,7 @@ body{
     font-weight: 600;
 
 	width: 100px;
-	heigth : 50px;
+	height : 50px;
 }
 
 .idBox{
@@ -109,9 +109,6 @@ body{
 	font-family: 'Pretendard-Regular';
 }
 
-.hr{
-
-}
 
 .imgbox{
 	position: relative;
