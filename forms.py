@@ -33,3 +33,6 @@ class ChangePWForm(FlaskForm):
 class ChangeProfile(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     stateM = StringField('stateM', validators=[DataRequired()])
+
+class SelectImage(FlaskForm):
+    hair_url = StringField('hair_url', validators=[DataRequired()])

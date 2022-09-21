@@ -70,6 +70,9 @@ function handleUpdate(fileList){
       a.click();
 
       imgURL = img.src;
+      var url = document.getElementById("hair_url");
+      url.value = imgURL;
+      console.log(url.value);
       const imgContainer = el("div", { className: "container-img" }, img);
       preview.append(imgContainer);
     });

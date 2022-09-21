@@ -2,6 +2,7 @@ import os #디렉토리 절대 경로
 import shutil
 from flask import Flask, render_template, jsonify, request, redirect
 from werkzeug.utils import secure_filename
+from config import Config
 
 #로그인, 회원가입 관련
 from flask_sqlalchemy import SQLAlchemy
@@ -10,7 +11,7 @@ from models import Fcuser
 from flask import session #세션
 
 from flask_wtf.csrf import CSRFProtect
-from forms import ChangePWForm, RegisterForm, LoginForm, ChangeProfile
+from forms import ChangePWForm, RegisterForm, LoginForm, ChangeProfile, SelectImage
 
 #StarGAN
 from StarGAN import model
@@ -18,6 +19,7 @@ from StarGAN import main as mainPy
 from StarGAN import solver
 
 app = Flask(__name__)
+csrf = CSRFProtect()
 
 ## HTML을 주는 부분
 @app.route('/')
@@ -81,6 +83,7 @@ def signup():
       fcuser.password = form.data.get('password')
       fcuser.stateM = "상태메세지를 입력해주세요"
       fcuser.profileIMG = "images/profile.jpg"
+      fcuser.hair_url = ""
 
       db.session.add(fcuser)
       db.session.commit()
@@ -92,8 +95,21 @@ def signup():
 def balloon_example():
    return render_template('BalloonExample.html')
 
-@app.route('/option_hair')
+@app.route('/option_hair', methods=['GET','POST'])
 def option_hair():
+   if request.method == 'POST':
+      form = SelectImage()
+      csrf.generate_csrf(app)
+      if form.validate_on_submit():
+         fcuser = Fcuser()
+         userid = session.get('userid', None)
+         user = fcuser.query.filter_by(userid=userid).first()
+         user.hair_url= form.data.get('url')
+         db.session.commit()
+         value = request.form['hair_url']
+         value = str(value)
+         print(value)
+         print(user.hairURL)
    return render_template('ChangePeopleSelect.html')
 
 @app.route('/option_cartoon')
@@ -160,7 +176,6 @@ if __name__ == '__main__':
       app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #추가 메모리를 사용하므로 꺼둔다
       app.config['SECRET_KEY'] = '123'
 
-      csrf = CSRFProtect()
       csrf.init_app(app)
 
       db.init_app(app) #app설정값 초기화
