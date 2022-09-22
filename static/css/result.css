@@ -29,6 +29,15 @@ body{
 	margin: 10px;
 }
 
+.right_box{
+    display: flex;
+	flex-direction: column;
+
+	flex: 0.25;
+	margin: 10px;
+    float : right;
+}
+
 .Photo{
 	background-color: #dddcdc;
 	flex : 0.95;

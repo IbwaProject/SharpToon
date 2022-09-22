@@ -18,7 +18,7 @@
 	
 	<div style="padding: 50px 0px 0px 20px;" class = "main_box">
 		<div class="main_screen">
-			<body>
+			
 				<div class="a">
 					<h1>&emsp;&emsp;&nbsp;Before&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After</h1>
 				</div>
@@ -26,19 +26,28 @@
 				<div class="b">
 					<img src="{{url_for('static', filename = 'images/result/imgOrigin.jpg')}}" alt="My Image" height="230" width="230">
 					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
-					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg">
+					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="makeballoon()">
 				</div>
 				<br><br>
 				<div align="right">
 					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
 				</div>
-			</body>
+			
 		</div>
+	</div>
+
+	</div>
+	<div class = "right_box">
+		말풍선 추가
+		<button id = "btn_add_balloon" onclick = "makeballoon_btn()" border-color="#ffffff">
+			<img src = "{{url_for('static', filename = 'images/Balloon1.png')}}" alt = "말풍선1" height = "100" width = "100"> </button>
 	</div>
 </body>
 </html>
 
 <script>
+	var buttonclick = 0;
+
 	window.onload = function() {
 		var result = document.getElementById("resultImg");
 		let getLink = window.location.search;
@@ -56,5 +65,57 @@
       	a.download = "imageTemp";
       	a.href = result.src;
       	a.click();
+	}
+
+	function makeballoon_btn()
+	{
+		var balloon_btn = document.getElementById("btn_add_balloon");
+		buttonclick++;
+		console.log(buttonclick);
+		
+		console.log('Hello1');
+		if(event.button != "1") return; //클릭의 event.button값은 무조건 0
+
+		if(!(buttonclick % 2)) {
+			balloon_btn.style.borderColor = "#ffffff";
+		}
+		else{
+			balloon_btn.style.borderColor = "green";
+		}
+	}
+
+	function makeballoon()
+	{	
+		// 클릭된 좌표값
+		var x = event.x;
+		var y = event.y;
+
+		// 버튼이 클릭되었을때
+		if (buttonclick % 2){
+			//클릭한 요소가 resultImg라면 (resultImg안에서만 말풍선 나오게)	
+		
+			//이미지 태그 생성
+			console.log('이미지 생성');
+			var img = document.createElement("img");
+			img.setAttribute("src", "{{url_for('static', filename = 'images/Balloon1.png')}}");
+			img.setAttribute("alt", "말풍선1");
+			img.setAttribute("width", "70");
+			img.setAttribute("height", "70");
+
+			// 이미지 태그의 좌표 지정
+			img.style.position = "absolute";
+			img.style.left = (x-(img.width/2)) + "px";
+			img.style.top = (y-(img.height/2)) + "px";
+
+			// <body> 자식으로 이미지 추가
+			document.body.appendChild(img);
+			img.style.zIndex = 2;
+			
+			// 이미지 태그에 이벤트 추가(마우스 휠 클릭 시 삭제)
+			img.onmousedown = function(){
+				if(event.button == "4")
+					document.body.removeChild(event.srcElement);
+			}
+		}
 	}
 </script>
