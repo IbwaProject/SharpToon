@@ -26,7 +26,7 @@
 				<div class="b">
 					<img src="{{url_for('static', filename = 'images/result/imgOrigin.jpg')}}" alt="My Image" height="230" width="230">
 					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
-					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="makeballoon()">
+					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="make_balloon_text()">
 				</div>
 				<br><br>
 				<div align="right">
@@ -39,14 +39,33 @@
 	</div>
 	<div class = "right_box">
 		말풍선 추가
-		<button id = "btn_add_balloon" onclick = "makeballoon_btn()" style= "border-color:'#ffffff'">
-			<img src = "{{url_for('static', filename = 'images/Balloon1.png')}}" alt = "말풍선1" height = "100" width = "100"> </button>
+		<button id = "btn_add_balloon" onclick = "makeballoon_btn()" style= "border-color: white; border-width : 6px">
+			Balloon
+			<!-- <img src = "{{url_for('static', filename = 'images/Balloon1.png')}}" alt = "말풍선1" height = "100" width = "100"> -->
+		</button>
+		<br>
+
+			<fieldset>
+				<legend> 텍스트 추가 </legend>
+				작성할 내용
+				<input id = "input_text" type = "text" value = "">
+
+				<button id = "btn_add_text" onclick = "maketext_btn()" style = "border-color: white; border-width : 6px">
+					TEXT
+				</button>
+			</fieldset>
+		
+		
 	</div>
 </body>
 </html>
 
 <script>
-	var buttonclick = 0;
+	var balloonbuttonclick = 0;
+	var textbuttonclick = 0;
+	var text_btn = document.getElementById("btn_add_text");
+	var balloon_btn = document.getElementById("btn_add_balloon");
+	var input_text = ""
 
 	window.onload = function() {
 		var result = document.getElementById("resultImg");
@@ -69,31 +88,31 @@
 
 	function makeballoon_btn()
 	{
-		var balloon_btn = document.getElementById("btn_add_balloon");
-		buttonclick++;
-		console.log(buttonclick);
+		balloonbuttonclick++;
+		console.log(balloonbuttonclick);
 		
+		textbuttonclick = 0;
+		text_btn.style.borderColor = 'white';
+
 		console.log('Hello1');
 		if(event.button != "1") return; //클릭의 event.button값은 무조건 0
 
-		if(!(buttonclick % 2)) {
-			balloon_btn.style.borderColor = "#ffffff";
+		if(!(balloonbuttonclick % 2)) {
+			balloon_btn.style.borderColor = 'white';
 		}
 		else{
-			balloon_btn.style.borderColor = "green";
+			balloon_btn.style.borderColor = 'green';
 		}
 	}
 
-	function makeballoon()
+	function make_balloon_text()
 	{	
 		// 클릭된 좌표값
 		var x = event.x;
 		var y = event.y;
 
-		// 버튼이 클릭되었을때
-		if (buttonclick % 2){
-			//클릭한 요소가 resultImg라면 (resultImg안에서만 말풍선 나오게)	
-		
+		// 말풍선 버튼이 클릭되었을때
+		if (balloonbuttonclick % 2){
 			//이미지 태그 생성
 			console.log('이미지 생성');
 			var img = document.createElement("img");
@@ -111,11 +130,58 @@
 			document.body.appendChild(img);
 			img.style.zIndex = 2;
 			
-			// 이미지 태그에 이벤트 추가(마우스 휠 클릭 시 삭제)
+			// 이미지 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
 			img.onmousedown = function(){
-				if(event.button == "4")
+				if(event.button == "2")
 					document.body.removeChild(event.srcElement);
+			}
+			img.onclick = function(){
+				make_balloon_text()
+			}
+		}
+
+		else if(textbuttonclick % 2){
+			// 텍스트 태그 생성
+			var textbox = document.createElement("h3");
+			var text = document.createTextNode(input_text);
+			textbox.appendChild(text);
+
+			console.log(x);
+
+			//텍스트 태그 좌표 지정
+			textbox.style.position= "absolute";
+			textbox.style.left = (x-15) + "px";
+			textbox.style.top = (y-17) + "px";
+
+			// <body> 자식으로 추가
+			document.body.appendChild(textbox);
+			textbox.style.zIndex = 3;
+
+			// 텍스트 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
+			textbox.onmousedown = function(){
+				if(event.button == "2")
+					document.body.removeChild(event.srcElement);
+			}
+			textbox.onclick = function(){
+				make_balloon_text()
 			}
 		}
 	}
+
+		function maketext_btn()
+		{
+			textbuttonclick++;
+			
+			balloonbuttonclick = 0;
+			balloon_btn.style.borderColor = 'white';
+
+			if(!(textbuttonclick % 2)) {
+				text_btn.style.borderColor = 'white';
+			}
+			else{
+				text_btn.style.borderColor = 'green';
+			}
+			input_text = document.getElementById("input_text").value;
+		}
+	
 </script>
