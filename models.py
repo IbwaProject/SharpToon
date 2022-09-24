@@ -10,4 +10,4 @@ class Fcuser(db.Model):
     username = db.Column(db.String(8))
     stateM = db.Column(db.String(64))
     profileIMG = db.Column(db.String(256))
-    hair_url=db.Column(db.String(1000))
+    hair_url = db.Column(db.String(256))

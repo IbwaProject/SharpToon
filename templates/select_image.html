@@ -31,10 +31,10 @@
 					<input type="submit" value="선택하기" class="input-btn">
 					<button class = "Photo-Button" id="url" name="hair_url">선택하기</button>
 				</form-->
-				<form method="POST" >
-					{{form.csrf_token}}
-					{{form.url(id="hair_url", name="hair_url")}}
-					<button class = "Photo-Button" type="submit" location.href="'/option_hair'">선택하기</button>
+				<form method="POST">
+				{{form.csrf_token}}
+				{{form.hair_url(id="hair_url")}}
+				<button class = "Photo-Button" type="submit" location.href="'/option_hair'">선택하기</button>
 				</form>
                 <button class = "Photo-Button">사진찍기</button>
 				<script src="{{url_for('static', filename='js/select_image.js')}}"></script>

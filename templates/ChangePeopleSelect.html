@@ -45,6 +45,9 @@ window.onload = function() {
 	var selectImage = document.getElementById("selectImg");
 	var nextImage = document.getElementById("next-image");
 
+	//let imgTag = document.createElement('img');
+  	//imgTag.src = src;
+  	//document.body.appendChild(imgTag);
 	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}"}
 	catch{selectImage.src=null}; //수정 필요
 	console.log(selectImage.src);

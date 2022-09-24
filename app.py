@@ -18,6 +18,7 @@ from StarGAN import model
 from StarGAN import main as mainPy
 from StarGAN import solver
 
+urlValue = "null"
 app = Flask(__name__)
 csrf = CSRFProtect()
 
@@ -83,7 +84,7 @@ def signup():
       fcuser.password = form.data.get('password')
       fcuser.stateM = "상태메세지를 입력해주세요"
       fcuser.profileIMG = "images/profile.jpg"
-      fcuser.hair_url = ""
+      fcuser.hair_url = "null"
 
       db.session.add(fcuser)
       db.session.commit()
@@ -97,19 +98,6 @@ def balloon_example():
 
 @app.route('/option_hair', methods=['GET','POST'])
 def option_hair():
-   if request.method == 'POST':
-      form = SelectImage()
-      csrf.generate_csrf(app)
-      if form.validate_on_submit():
-         fcuser = Fcuser()
-         userid = session.get('userid', None)
-         user = fcuser.query.filter_by(userid=userid).first()
-         user.hair_url= form.data.get('url')
-         db.session.commit()
-         value = request.form['hair_url']
-         value = str(value)
-         print(value)
-         print(user.hairURL)
    return render_template('ChangePeopleSelect.html')
 
 @app.route('/option_cartoon')
@@ -120,9 +108,21 @@ def option_cartoon():
 def result():
    return render_template('result.html')
 
-@app.route('/select_image')
+@app.route('/select_image', methods = ['GET', 'POST'])
 def select_image():
-   return render_template('select_image.html')
+   form = SelectImage()
+   fcuser = Fcuser()
+   userid = session.get('userid', None)
+   user = fcuser.query.filter_by(userid=userid).first()
+   hair_url = user.hair_url
+   if form.validate_on_submit():
+      db.session.commit()
+      urlValue = request.form['hair_url']
+      urlValue = str(urlValue)
+      print(urlValue)
+      hair_url = urlValue
+      return render_template('ChangePeopleSelect.html', hair_url=hair_url)
+   return render_template('select_image.html', form=form, hair_url=hair_url)
 
 @app.route('/Settings')
 def Settings():

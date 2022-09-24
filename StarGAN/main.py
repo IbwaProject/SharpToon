@@ -72,7 +72,7 @@ def main():
     f = open(config.attr_path, 'w')
     f.write("1\n")
     f.write("Black_Hair Blond_Hair Brown_Hair Male Young\n")
-    f.write(str(file_list[0])+"  1 -1 -1 -1  1")
+    f.write(str(file_list[0])+" -1  1 -1 -1  1")
     f.close()
 
     # Data loader.
