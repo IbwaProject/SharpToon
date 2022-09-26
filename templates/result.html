@@ -32,7 +32,8 @@
 				<div align="right">
 					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
 				</div>
-			
+				
+				<button class = "goto_option_cartoon" onClick="location.href='/option_cartoon'">만화화하기</button>
 		</div>
 	</div>
 
@@ -49,13 +50,10 @@
 				<legend> 텍스트 추가 </legend>
 				작성할 내용
 				<input id = "input_text" type = "text" value = "">
-
 				<button id = "btn_add_text" onclick = "maketext_btn()" style = "border-color: white; border-width : 6px">
 					TEXT
 				</button>
 			</fieldset>
-		
-		
 	</div>
 </body>
 </html>
