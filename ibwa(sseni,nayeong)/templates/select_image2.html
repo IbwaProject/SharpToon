@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Select_image</title>
+	<link rel="stylesheet" href="../static/css/select_image.css">
+</head>
+
+<body>
+	<div class = "page">
+	<div class = "left_box">
+		<div style="padding: 0px 0px 0px 20px;" class="Photo">
+			<br>NAME<br><br>
+				ID
+		</div>
+	</div>
+    
+    <div style="padding: 50px 0px 0px 20px;" class = "main_box">
+		<div class="main_screen">
+            <main class="container">
+                <label class="label" id="label" for="input">
+                <div class="inner" id="inner">드래그하거나 클릭해서 업로드</div>
+                </label>
+                <input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
+                <p class="preview-title">preview</p>
+                <div class="preview" id="preview"></div>
+                <button class = "Photo-Button" onClick="location.href='/option_cartoon'">선택하기</button>
+				<!--button class = "Photo-Button" onClick="makeResult()">선택하기</button-->
+                <button class = "Photo-Button" onClick="location.href='/camera'">사진찍기</button>
+				<script src="{{url_for('static', filename='js/select_image2.js')}}"></script>
+            </main>
+        </div>
+	</div>
+</body>
+</html>

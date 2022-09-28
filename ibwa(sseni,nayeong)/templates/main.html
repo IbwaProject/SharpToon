@@ -1,0 +1,164 @@
+  <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<link href="../static/css/style2.css" rel="stylesheet">
+<style>
+
+.container {
+  position: relative;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.bottom-right1 {
+  position: absolute;
+  top: 1040px;
+  /*right: 380px;*/
+  float: right;
+  border:none; 
+  resize:none;
+  text-align: right;
+}
+.bottom-right2 {
+  position: absolute;
+  top: 1040px;
+  /*right: 700px;*/
+  float: right;
+  border:none; 
+  resize:none;
+  text-align: right;
+}
+
+</style>
+<script>
+    var slideIndex = 0; //slide index
+    
+    // HTML 로드가 끝난 후 동작
+    window.onload=function(){
+      showSlides(slideIndex);
+    
+      // Auto Move Slide
+      var sec = 3000;
+      setInterval(function(){
+        slideIndex++;
+        showSlides(slideIndex);
+    
+      }, sec);
+    }
+    
+    
+    // Next/previous controls
+    function moveSlides(n) {
+      slideIndex = slideIndex + n
+      showSlides(slideIndex);
+    }
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+      slideIndex = n;
+      showSlides(slideIndex);
+    }
+    
+    function showSlides(n) {
+    
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      var size = slides.length;
+    
+      if ((n+1) > size) {
+        slideIndex = 0; n = 0;
+      }else if (n < 0) {
+        slideIndex = (size-1);
+        n = (size-1);
+      }
+    
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+    
+      slides[n].style.display = "block";
+      dots[n].className += " active";
+    }
+</script>
+</head>
+
+
+<body>
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 5</div>
+          <img src="{{url_for('static', filename = 'images/image1.jpg')}}" style="width:100%">
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 5</div>
+          <img src="{{url_for('static', filename = 'images/image2.jpg')}}" style="width:100%">
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 5</div>
+          <img src="{{url_for('static', filename = 'images/image3.jpg')}}" style="width:100%">
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 5</div>
+          <img src="{{url_for('static', filename = 'images/image4.jpg')}}" style="width:100%">
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 5</div>
+          <img src="{{url_for('static', filename = 'images/image5.jpg')}}" style="width:100%">
+        </div>
+  
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+        <a class="next" onclick="moveSlides(1)">&#10095;</a>
+      </div>
+      <br/>
+  
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+  
+      <div class="content">
+        <div class="row">
+            <div class="cell" style="width: 300px;">
+                <img src="{{url_for('static', filename = 'images/image6.jpg')}}" width="300px" height="300px"/>
+                <div class="bottom-right2"><a href="/option_hair"><i>>> Change Facial Expression</i></a></div>
+            </div>
+
+            <div class="cell" style="width: 300px;">
+                <img src="{{url_for('static', filename = 'images/image7.jpg')}}" width="300px" height="300px"/>
+                <div class="bottom-right1"><a href="/option_cartoon"><i>>> Cartoonization</i></a></div>
+            </div>
+
+            <div class="side" style="width: 500px;">
+                <div class="btn">
+                    {%if userid%}
+                    <a href="/ViewProfile">프로필</a>
+                    <a href="/Settings">설정</a>
+                    <a href="/logout">로그아웃</a>
+                    {%else%}
+                    <button class="button" onClick="location.href='/login'">Login</button>    
+                    <button class="button" onClick="location.href='/signup'">Sign Up</button> 
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+
+      
+</body>
+</html>

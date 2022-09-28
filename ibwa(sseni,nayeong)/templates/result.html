@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Result</title>
+	<link rel="stylesheet" href="../static/css/result.css">
+</head>
+
+<body>
+	<div class = "page">
+	<div class = "left_box">
+		<div style="padding: 0px 0px 0px 20px;" class="Photo">
+			<br>NAME<br><br>
+				ID
+		</div>
+	</div>
+	
+	<div style="padding: 50px 0px 0px 20px;" class = "main_box">
+		<div class="main_screen">
+			<body>
+				<div class="a">
+					<h1>&emsp;&emsp;&nbsp;Before&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After</h1>
+				</div>
+
+				<div class="b">
+					<img src="{{url_for('static', filename = 'images/result/imgOrigin.jpg')}}" alt="My Image" height="230" width="230">
+					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
+					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg">
+				</div>
+				<br><br>
+				<div align="right">
+					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
+				</div>
+			</body>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	window.onload = function() {
+		var result = document.getElementById("resultImg");
+		let getLink = window.location.search;
+		let getOption = getLink.split('=');
+		let getOnlyOption = getOption[1];
+		let decodeName = decodeURI(getOnlyOption)
+
+		if(decodeName=="1") result.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
+		else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
+		else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
+	}
+	function downloadImg() {
+		var result = document.getElementById("resultImg");
+		var a = document.createElement('a');
+      	a.download = "imageTemp";
+      	a.href = result.src;
+      	a.click();
+	}
+</script>

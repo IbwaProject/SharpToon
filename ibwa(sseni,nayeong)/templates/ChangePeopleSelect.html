@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>표정 옵션 선택 시</title>
+	<link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body onscroll="scroll()">
+	<div class = "page">
+	<div class = "left_box" id="leftBox">
+		<div class="Photo">
+			<button class = "Photo-Button" onClick="location.href='/select_image'">사진 업로드</button>
+			<!--img class="Select-image" src=""-->
+			<img class="Select-image" id="selectImg">
+		</div>
+	</div>
+
+<div class = "main_box">
+	<div class="main_screen">
+		<div class="upper-content">
+		<form method = "post">
+			<div class="text-title">염색</div><br>
+			<label><input type="radio" name="face_expression" value = "1" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_1.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "2" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_2.png')}}"></label><br>
+			<label><input type="radio" name="face_expression" value = "3" onclick="drawImg(event)"> <img class = "imgs" src="{{url_for('static', filename = 'images/IU_3.png')}}"></label><br>
+		</form>
+		</div>
+	</div>
+</div>
+</div>
+
+<!--button class = "button_Bottom" id = "button_Bottom"><img class="button_Bottom_img" id="next-image"></button-->
+<div id = "button_Bottom">
+<!--input type="submit" value="전송" id="next-image"-->
+<img class="button_Bottom_img" id="next-image"></img>
+</div>
+</body>
+</html>
+
+
+<script>
+window.onload = function() {
+	var selectImage = document.getElementById("selectImg");
+	var nextImage = document.getElementById("next-image");
+
+	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}"}
+	catch{selectImage.src=null}; //수정 필요
+	console.log(selectImage.src);
+}
+
+function drawImg(event) {
+    var nextImage = document.getElementById("next-image");
+	var selectImage = document.getElementById("selectImg");
+    nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
+	
+	if(selectImage.src != null) {
+		nextImage.addEventListener("click", function() {
+			let hairOption = event.target.value;
+            window.location.href = "/run_model?option=" + hairOption;
+		});
+	}
+}
+
+function scroll() {
+  var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  var windowSize = window.innerHeight;
+  var btnBottom = document.getElementById("button_Bottom");
+  var leftbox = document.getElementById("leftBox");
+
+  btnBottom.style.bottom=-nVScroll + 10 +"px";
+  leftbox.style.height = 1311 / windowSize * 100 +"%";
+}
+</script>

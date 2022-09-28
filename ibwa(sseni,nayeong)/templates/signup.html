@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--www.codingflicks.com--> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sign Up</title>
+	<link href="../static/css/style1.css" rel="stylesheet">
+</head>
+<body>
+	<div class="form-box">
+		<div class="header-text">
+			Sign Up Form
+		</div>
+		<form method = "POST">
+			{{form.csrf_token}}
+			{{form.userid(id="userid", placeholder="아이디")}}
+			{{form.username(id="username", placeholder="사용자 이름")}}
+			{{form.password(id="password", placeholder="비밀번호")}}
+			{{form.re_password(id="re_password", placeholder="비밀번호 확인")}}
+
+    		<!--<input type="text" placeholder="User name"  id="name" name = "name"> <<button>Check</button>-->
+    		<!--<input placeholder="User id" type="text" id="userid" name = "userid"> <button>Check</button>
+    		<input placeholder="Your Password" type="password" id="password" name = "password"> 
+    		<input placeholder="Check Your Password" type="password" id="password_2" name = "password_2"> -->
+    		
+			<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" type="submit">Sign Up</button>
+    		<button style="width:193px; margin:5px 5px 5px 5px; margin-top:30px;" onclick="ResetBtn()">Reset</button>
+		</form>
+	</div>
+</body>
+</html>
+
+<script>
+	function ResetBtn(){
+		document.getElementById("name").value=null;
+    	document.getElementById("id").value=null;
+    	document.getElementById("pw").value=null;
+    	document.getElementById("repw").value=null;
+	}
+</script>

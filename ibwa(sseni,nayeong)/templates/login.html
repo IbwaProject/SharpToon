@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--www.codingflicks.com--> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link href="../static/css/style3.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="form-box">
+    <form method="POST" >  
+		<div class="header-text">
+			Login Form
+		</div>
+    
+    {{form.csrf_token}}
+    {{form.userid(id="userid", placeholder="Your Id")}}
+    {%if form.password.errors%}  
+    <!-- 로그인 실패시 errors/ password필드의 모든 에러를 갖고있다. -->
+    {{form.password.errors.0}}
+    <!--0 : 첫번째 에러메시지를 출력 하겠다 라는 뜻  -->
+    {%endif%}
+    {{form.password(id="pw", placeholder="Your Password")}}
+    <!--<input placeholder="Your Email Address" type="text" id="id"> 
+    <input placeholder="Your Password" type="password" id="pw"> 
+    <input id="terms" type="checkbox"> -->
+
+    <span>
+      <a href="#">Forgot id?</a> &nbsp &nbsp
+      <a href="/forgotPW">Forgot Password?</a>
+    </span> 
+    <button type="submit">login</button> 
+    </form>
+	</div>
+  </body>
+</html>

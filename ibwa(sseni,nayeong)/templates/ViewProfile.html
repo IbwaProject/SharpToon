@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>프로필 설정</title>
+	<link rel="stylesheet" href="../static/css/style_vf.css"/>
+</head>
+
+<body>
+	<div class = "sidebar">
+		<div class = "header-text">기본 프로필 관리</div>
+		<div class = "whole">
+		<div class = "profile">
+			<div class = "profile-img-box"> <img class = "profile-img" src="{{url_for('static', filename = 'images/IU_profile.jpg')}}"></div>
+			<div class = "profile-box">
+				<div class = "profile-name">IU</div>
+				<div class = "profile-message">상태 메세지😋</div>
+				<div class = "modify-button-box">
+					<button class = "modify-button">편집</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="idBox">
+			<div class = "idTitle">아이디</div>
+			<div class = "id">dlwlrma</div>
+		</div>
+		<hr width="100%">
+
+		<div class = "imgbox">
+		<img class = "imgs" src="{{url_for('static', filename = 'images/IU.jpg')}}">
+		<img class = "imgs" src="{{url_for('static', filename = 'images/IU.jpg')}}">
+		<img class = "imgs" src="{{url_for('static', filename = 'images/IU.jpg')}}">
+		</div>
+	</div>
+</div>
+</body>
+</html>
