@@ -94,7 +94,7 @@ def balloon_example():
 
 @app.route('/option_hair')
 def option_hair():
-   return render_template('ChangePeopleSelect.html')
+   return render_template('option_hair.html')
 
 @app.route('/option_cartoon')
 def option_cartoon():
