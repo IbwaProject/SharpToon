@@ -13,19 +13,18 @@
 		<div class = "whole">
 		
 			<div class = "profile">
-				
-
-				<input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
-					<div class="preview" id="preview"></div>
 					<label class="label" id="label" for="input">
 						<div class="inner" id="inner">
+							<form action="">
+								<input type="file" id="chooseFile" name="chooseFile" class="img-input" required>
+							</form>
 							<div class = "profile-img-box"> 
-								<img float = "center" class = "profile-img" style = "opacity:1" onmouseover="this.style.opacity='0.5'" onmouseout ="this.style.opacity='1'" src="{{url_for('static', filename = profileIMG)}}">
+								<div class = "img">
+									<img src="{{url_for('static', filename = profileIMG)}}" id = "profileimg">
+								<script src="{{url_for('static', filename='js/profile_image.js')}}"></script>
 							</div>
-						</div>
+							</div>
 					</label>
-					<script src="{{url_for('static', filename='js/profile_image.js')}}"></script>
-
 
 					<div class = "profile-box">
 					<form method="POST" >  
@@ -36,7 +35,7 @@
 					상태 메세지
 					{{form.stateM(id="stateM")}}
 					<br>
-						<button class = "modify-button" type="submit">완료</button>
+						<button class = "modify-button" type="submit" onclick = "Getimgsrc()">완료</button>
 					</form>
 				</div>
 			</div>
@@ -47,3 +46,13 @@
 </div>
 </body>
 </html>
+
+
+<script>
+	var image = document.getElementById("profileimg")
+	function Getimgsrc()
+	{
+		var imgsrc = image.src
+		
+	}
+</script>

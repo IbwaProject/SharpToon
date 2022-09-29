@@ -1,117 +1,92 @@
-var input = document.getElementById("input");
-var initLabel = document.getElementById("label");
-var imgURL;
+const realInput = document.querySelector(".img-input");
+const imgTag = document.querySelector(".img");
 
-input.addEventListener("change", (event) => {
-  const files = changeEvent(event);
-  handleUpdate(files);
-});
+const resizeImage = (settings) => {
+  const file = settings.file;
+  const maxSize = settings.maxSize;
+  const reader = new FileReader();
+  const image = new Image();
+  const canvas = document.createElement("canvas");
 
-initLabel.addEventListener("mouseover", (event) => {
-  event.preventDefault();
-  const label = document.getElementById("label");
-  label?.classList.add("label--hover");
-});
+  const dataURItoBlob = (dataURI) => {
+    const bytes =
+      dataURI.split(",")[0].indexOf("base64") >= 0
+        ? atob(dataURI.split(",")[1])
+        : unescape(dataURI.split(",")[1]);
+    const mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    const max = bytes.length;
+    const ia = new Uint8Array(max);
+    for (let i = 0; i < max; i++) ia[i] = bytes.charCodeAt(i);
+    return new Blob([ia], { type: mime });
+  };
 
-initLabel.addEventListener("mouseout", (event) => {
-  event.preventDefault();
-  const label = document.getElementById("label");
-  label?.classList.remove("label--hover");
-});
+  const resize = () => {
+    let width = image.width;
+    let height = image.height;
+    if (width > height) {
+      if (width > maxSize) {
+        height *= maxSize / width;
+        width = maxSize;
+      }
+    } else {
+      if (height > maxSize) {
+        width *= maxSize / height;
+        height = maxSize;
+      }
+    }
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+    const dataUrl = canvas.toDataURL("image/jpeg");
+    return dataURItoBlob(dataUrl);
+  };
 
-document.addEventListener("dragenter", (event) => {
-  event.preventDefault();
-  console.log("dragenter");
-  if (event.target.className === "inner") {
-    event.target.style.background = "#616161";
-  }
-});
-
-document.addEventListener("dragover", (event) => {
-  console.log("dragover");
-  event.preventDefault();
-});
-
-document.addEventListener("dragleave", (event) => {
-  event.preventDefault();
-  console.log("dragleave");
-  if (event.target.className === "inner") {
-    event.target.style.background = "#3a3a3a";
-  }
-});
-
-document.addEventListener("drop", (event) => {
-  event.preventDefault();
-  console.log("drop");
-  if (event.target.className === "inner") {
-    const files = event.dataTransfer?.files;
-    event.target.style.background = "#3a3a3a";
-    handleUpdate([...files]);
-  }
-});
-
-function changeEvent(event){
-  const { target } = event;
-  return [...target.files];
-};
-
-function handleUpdate(fileList){
-  const preview = document.getElementById("preview");
-  fileList.forEach((file) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", (event) => {
-      const img = el("img", {
-        className: "embed-img",
-        src: event.target?.result,
-      });
-
-      imgURL = img.src;
-      document.getElementsByName("profile-img").src = imgURL
-      const imgContainer = el("div", { className: "container-img" }, img);
-      preview.append(imgContainer);
-    });
+  return new Promise((ok, no) => {
+    if (!file) {
+      return;
+    }
+    if (!file.type.match(/image.*/)) {
+      no(new Error("Not an image"));
+      return;
+    }
+    reader.onload = (readerEvent) => {
+      image.onload = () => {
+        return ok(resize());
+      };
+      image.src = readerEvent.target.result;
+    };
     reader.readAsDataURL(file);
   });
 };
 
+const handleImgInput = (e) => {
+  const config = {
+    file: e.target.files[0],
+    maxSize: 350,
+  };
+  resizeImage(config)
+    .then((resizedImage) => {
+      const url = window.URL.createObjectURL(resizedImage);
+      const img = document.createElement("img");
+      const removeimg = document.getElementById("profileimg");
+      removeimg.remove();
+      img.setAttribute("src", url);
+      img.className = "profile-img";
+      img.style.display = "block";
+      img.id = "profileimg"
+      imgTag.appendChild(img);
+    })
+    .then(() => {
+      const img = document.querySelector(".profile-img");
+      img.onload = () => {
+        const widthDiff = (img.clientWidth - imgTag.offsetWidth) / 2;
+        const heightDiff = (img.clientHeight - imgTag.offsetHeight) / 2;
+        img.style.transform = `translate( -${widthDiff}px , -${heightDiff}px)`;
+      };
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-
-function makeResult() {
-  var img = document.getElementById("preview");
-  if(img.firstChild != null) {
-    console.log(imgURL);
-  }
-}
-
-function el(nodeName, attributes, ...children) {
-  const node =
-    nodeName === "fragment"
-      ? document.createDocumentFragment()
-      : document.createElement(nodeName);
-
-  Object.entries(attributes).forEach(([key, value]) => {
-    if (key === "events") {
-      Object.entries(value).forEach(([type, listener]) => {
-        node.addEventListener(type, listener);
-      });
-    } else if (key in node) {
-      try {
-        node[key] = value;
-      } catch (err) {
-        node.setAttribute(key, value);
-      }
-    } else {
-      node.setAttribute(key, value);
-    }
-  });
-
-  children.forEach((childNode) => {
-    if (typeof childNode === "string") {
-      node.appendChild(document.createTextNode(childNode));
-    } else {
-      node.appendChild(childNode);
-    }
-  });
-
-  return node;
-}
+realInput.addEventListener("change", handleImgInput);
