@@ -12,7 +12,6 @@
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
 			<button class = "Photo-Button" onClick="location.href='/select_image'">사진 업로드</button>
-			<!--img class="Select-image" src=""-->
 			<img class="Select-image" id="selectImg" onerror = "this.style.display='none'">
 		</div>
 	</div>
@@ -31,9 +30,7 @@
 </div>
 </div>
 
-<!--button class = "button_Bottom" id = "button_Bottom"><img class="button_Bottom_img" id="next-image"></button-->
 <div id = "button_Bottom">
-<!--input type="submit" value="전송" id="next-image"-->
 <img class="button_Bottom_img" id="next-image"></img>
 </div>
 </body>
@@ -46,19 +43,25 @@ window.onload = function() {
 	var nextImage = document.getElementById("next-image");
 
 	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}"}
-	catch{selectImage.src=null}; //수정 필요
+	catch{selectImage.src=null};
 	console.log(selectImage.src);
 }
 
 function drawImg(event) {
     var nextImage = document.getElementById("next-image");
 	var selectImage = document.getElementById("selectImg");
+	nextImage.style.display='block';
     nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
 	
-	if(selectImage.src != null) {
+	if(selectImage.style.display!='none') {
 		nextImage.addEventListener("click", function() {
 			let hairOption = event.target.value;
             window.location.href = "/run_model?option=" + hairOption;
+		});
+	}
+	else {
+		nextImage.addEventListener("click", function() {
+			alert('사진을 업로드해주세요');
 		});
 	}
 }
