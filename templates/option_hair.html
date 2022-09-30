@@ -8,6 +8,10 @@
 </head>
 
 <body onscroll="scroll()">
+	<div class="layerPopup">
+		<div class="spinner"></div>
+	</div>
+
 	<div class = "page">
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
@@ -55,6 +59,7 @@ function drawImg(event) {
 	
 	if(selectImage.style.display!='none') {
 		nextImage.addEventListener("click", function() {
+			document.getElementsByClassName('layerPopup')[0].style.display='block';
 			let hairOption = event.target.value;
             window.location.href = "/run_model?option=" + hairOption;
 		});
