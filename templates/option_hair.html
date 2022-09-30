@@ -35,40 +35,37 @@
 </div>
 
 <div id = "button_Bottom">
-<img class="button_Bottom_img" id="next-image"></img>
+<img class="button_Bottom_img" id="next-image" onclick="showAlert()"></img>
 </div>
 </body>
 </html>
 
 
 <script>
+var nextImage = document.getElementById("next-image");
+var selectImage = document.getElementById("selectImg");
 window.onload = function() {
-	var selectImage = document.getElementById("selectImg");
-	var nextImage = document.getElementById("next-image");
-
 	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}"}
 	catch{selectImage.src=null};
 	console.log(selectImage.src);
 }
 
 function drawImg(event) {
-    var nextImage = document.getElementById("next-image");
-	var selectImage = document.getElementById("selectImg");
 	nextImage.style.display='block';
     nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
 	
 	if(selectImage.style.display!='none') {
+		nextImage.onclick=null;
 		nextImage.addEventListener("click", function() {
 			document.getElementsByClassName('layerPopup')[0].style.display='block';
 			let hairOption = event.target.value;
             window.location.href = "/run_model?option=" + hairOption;
 		});
 	}
-	else {
-		nextImage.addEventListener("click", function() {
-			alert('사진을 업로드해주세요');
-		});
-	}
+}
+
+function showAlert() {
+	alert('사진을 업로드해주세요');
 }
 
 function scroll() {
