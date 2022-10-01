@@ -68,6 +68,14 @@ function showAlert() {
 	alert('사진을 업로드해주세요');
 }
 
+window.onload = function() {
+	scroll();
+}
+
+window.onresize = function(event){
+	scroll();
+}
+
 function scroll() {
   var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
   var windowSize = window.innerHeight;

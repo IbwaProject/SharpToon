@@ -58,7 +58,7 @@
 </body>
 </html>
 
-<script>
+<script type='text/javascript'>
 	var balloonbuttonclick = 0;
 	var textbuttonclick = 0;
 	var text_btn = document.getElementById("btn_add_text");
@@ -76,6 +76,7 @@
 		else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
 		else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
 	}
+
 	function downloadImg() {
 		var result = document.getElementById("resultImg");
 		var a = document.createElement('a');
@@ -130,6 +131,7 @@
 			
 			// 이미지 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
 			img.onmousedown = function(){
+				startDrag(event, this);
 				if(event.button == "2")
 					document.body.removeChild(event.srcElement);
 			}
@@ -166,20 +168,89 @@
 		}
 	}
 
-		function maketext_btn()
-		{
-			textbuttonclick++;
-			
-			balloonbuttonclick = 0;
-			balloon_btn.style.borderColor = 'white';
+	var img_L = 0;
+	var img_T = 0;
+	var resize_L = 0;
+	var resize_T = 0;
+	var img_W = 0;
+	var img_H = 0;
+	var key = false;
+	var targetObj;
 
-			if(!(textbuttonclick % 2)) {
-				text_btn.style.borderColor = 'white';
-			}
-			else{
-				text_btn.style.borderColor = 'green';
-			}
-			input_text = document.getElementById("input_text").value;
+	window.addEventListener("keydown", (e) => {
+	    if(e.keyCode==17 || e.keyCode==25) {
+	        key=true;
+	    }
+	});
+
+	window.addEventListener("keyup", (e) => {
+	    key=false;
+	});
+
+	function resize() {
+	    resize_X=event.x - resize_L;
+	    resize_Y=event.y - resize_T;
+	    console.log(resize_L);
+	    console.log(resize_X);
+	    console.log(img_W);
+	    targetObj.width=img_W + resize_X;
+	    targetObj.height=img_H + resize_Y;
+	}
+
+	function getLeft(o){
+	    return parseInt(o.style.left.replace('px', ''));
+	}
+	function getTop(o){
+	    return parseInt(o.style.top.replace('px', ''));
+	}
+
+	// 이미지 움직이기
+	function moveDrag(e){
+	    var e_obj = window.event? window.event : e;
+	    var dmvx = parseInt(e_obj.clientX + img_L);
+	    var dmvy = parseInt(e_obj.clientY + img_T);
+	    targetObj.style.left = dmvx +"px";
+	    targetObj.style.top = dmvy +"px";
+	    return false;
+	}
+
+	// 드래그 시작
+	function startDrag(e, obj){
+		balloonbuttonclick = 0;
+	    targetObj = obj;
+	    var e_obj = window.event? window.event : e;
+	    img_L = getLeft(obj) - e_obj.clientX;
+	    img_T = getTop(obj) - e_obj.clientY;
+	    img_W = targetObj.width;
+	    img_H = targetObj.height;
+	    resize_L = e_obj.clientX;
+	    resize_T = e_obj.clientY;
+	    if(key)
+	        document.onmousemove = resize;
+	    else document.onmousemove = moveDrag;
+	    document.onmouseup = stopDrag;
+	    if(e_obj.preventDefault)e_obj.preventDefault(); 
+	}
+
+	// 드래그 멈추기
+	function stopDrag(){
+	    document.onmousemove = null;
+	    document.onmouseup = null;
+	}
+
+	function maketext_btn()
+	{
+		textbuttonclick++;
+		
+		balloonbuttonclick = 0;
+		balloon_btn.style.borderColor = 'white';
+		if(!(textbuttonclick % 2)) {
+			text_btn.style.borderColor = 'white';
 		}
+		else{
+			text_btn.style.borderColor = 'green';
+		}
+		input_text = document.getElementById("input_text").value;
+	}
 	
 </script>
