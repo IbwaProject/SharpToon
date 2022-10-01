@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../static/css/style_Option.css">
 </head>
 
-<body  onscroll="scroll()">
+<body onscroll="scroll()">
 	<div class = "page">
 	<div class = "left_box" id="leftBox">
 		<div class="Photo">
@@ -37,6 +37,14 @@
 </html>
 
 <script>
+
+window.onload = function() {
+	scroll();
+}
+
+window.onresize = function(event){
+	scroll();
+}
 
 function scroll() {
   var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
