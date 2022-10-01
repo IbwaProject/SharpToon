@@ -26,13 +26,16 @@
 				<div class="b">
 					<img src="{{url_for('static', filename = 'images/result/imgOrigin.jpg')}}" alt="My Image" height="230" width="230">
 					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
+					<div id="screenshot">
 					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="make_balloon_text()">
+					</div>
 				</div>
 				<br><br>
 				<div align="right">
 					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
 				</div>
-				
+				<button type="button" id="save">캡쳐!</button>
+				<div id="temp"></div>
 				<button class = "goto_option_cartoon" onClick="location.href='/option_cartoon'">만화화하기</button>
 		</div>
 	</div>
@@ -58,6 +61,8 @@
 </body>
 </html>
 
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <script type='text/javascript'>
 	var balloonbuttonclick = 0;
 	var textbuttonclick = 0;
@@ -114,6 +119,7 @@
 		if (balloonbuttonclick % 2){
 			//이미지 태그 생성
 			console.log('이미지 생성');
+			var targetDiv = document.getElementById('screenshot');
 			var img = document.createElement("img");
 			img.setAttribute("src", "{{url_for('static', filename = 'images/Balloon1.png')}}");
 			img.setAttribute("alt", "말풍선1");
@@ -126,7 +132,8 @@
 			img.style.top = (y-(img.height/2)) + "px";
 
 			// <body> 자식으로 이미지 추가
-			document.body.appendChild(img);
+			//document.body.appendChild(img);
+			targetDiv.appendChild(img);
 			img.style.zIndex = 2;
 			
 			// 이미지 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
@@ -190,9 +197,6 @@
 	function resize() {
 	    resize_X=event.x - resize_L;
 	    resize_Y=event.y - resize_T;
-	    console.log(resize_L);
-	    console.log(resize_X);
-	    console.log(img_W);
 	    targetObj.width=img_W + resize_X;
 	    targetObj.height=img_H + resize_Y;
 	}
@@ -252,5 +256,13 @@
 		}
 		input_text = document.getElementById("input_text").value;
 	}
+
+	$(function() {
+		$("#save").click(function() {
+			html2canvas($('#screenshot').get(0)).then(function (canvas) {
+				document.getElementById('temp').appendChild(canvas)
+			});
+		});
+	});
 	
 </script>
