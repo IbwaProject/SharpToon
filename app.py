@@ -17,6 +17,11 @@ from StarGAN import model
 from StarGAN import main as mainPy
 from StarGAN import solver
 
+from WhiteBox.test_code import cartoonize as mainPy4
+
+from OpenCV import main as mainPy2
+from CartoonGan import main as mainPy3
+
 app = Flask(__name__)
 
 ## HTML을 주는 부분
@@ -100,13 +105,13 @@ def option_hair():
 def option_cartoon():
    return render_template('option_cartoon.html')
 
-@app.route('/result')
-def result():
-   return render_template('result.html')
-
 @app.route('/select_image')
 def select_image():
    return render_template('select_image.html')
+
+@app.route('/select_image2')
+def select_image2():
+   return render_template('select_image2.html')
 
 @app.route('/Settings')
 def Settings():
@@ -140,11 +145,26 @@ def changeProfile():
       return redirect('/ViewProfile')
    return render_template('changeProfile.html', form=form, profileIMG=profileIMG)
 
+@app.route('/result')
+def result():
+   return render_template('result.html')
+
 @app.route('/run_model')
 def run_model():
    mainPy.main()
    return render_template('result.html')
    
+@app.route("/result2")
+def result2():
+   return render_template('result2.html')
+
+@app.route('/run_model2')
+def run_model2():
+   mainPy2.main() 
+   mainPy3.main() 
+   mainPy4.cartoonize()
+   return render_template('result2.html')
+
 ## 웹에서 사용할 APIs 
 
 ## 서버 연결
