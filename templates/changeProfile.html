@@ -9,15 +9,13 @@
 
 <body>
 	<div class = "sidebar">
-		<div class = "header-text">기본 프로필 관리</div>
+		<div class = "header-text">기본 프로필 편집</div>
 		<div class = "whole">
 		
-			<div class = "profile">
+			<div class = "profile2">
 					<label class="label" id="label" for="input">
 						<div class="inner" id="inner">
-							<form action="">
-								<input type="file" id="chooseFile" name="chooseFile" class="img-input" required>
-							</form>
+							
 							<div class = "profile-img-box"> 
 								<div class = "img">
 									<img src="{{url_for('static', filename = profileIMG)}}" id = "profileimg">
@@ -26,7 +24,7 @@
 							</div>
 					</label>
 
-					<div class = "profile-box">
+					<div class = "profile-box2">
 					<form method="POST" >  
 					{{form.csrf_token}}
 					닉네임
@@ -35,13 +33,16 @@
 					상태 메세지
 					{{form.stateM(id="stateM")}}
 					<br>
+					<form action="">
+						<input type="file" id="chooseFile" name="chooseFile" class="img-input" required>
+					</form>
+					<div class = "modify-button-box2">
 						<button class = "modify-button" type="submit" onclick = "Getimgsrc()">완료</button>
+					</div>
 					</form>
 				</div>
 			</div>
-		
 
-		<hr width="100%">
 	</div>
 </div>
 </body>
