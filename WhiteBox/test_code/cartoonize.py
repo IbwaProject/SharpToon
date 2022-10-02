@@ -23,7 +23,7 @@ def resize_crop(image):
     
 
 def cartoonize():
-    img = cv2.imread("static/images/input/imageTemp.jpg")
+    img = cv2.imread("static/images/input/imageTemp1.jpg")
     save_file = "static/images/b_iu_whitebox.jpg"
     model_path = 'WhiteBox/test_code/saved_models'
     # load_file = 'static/images/b_iu.jpg'

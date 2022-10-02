@@ -6,7 +6,7 @@ import os
 
 def main():
 
-    img = cv2.imread("static/images/input/imageTemp.jpg") # "static/images/b_iu.jpg"
+    img = cv2.imread("static/images/input/imageTemp1.jpg") # "static/images/b_iu.jpg"
     save_file = "static/images/b_iu_cartoon.jpg"
     # cv2.imshow("img", img)
 

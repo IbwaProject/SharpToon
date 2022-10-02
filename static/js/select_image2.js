@@ -65,7 +65,7 @@ function handleUpdate(fileList){
         src: event.target?.result,
       });
       var a = document.createElement('a');
-      a.download = "imageTemp";
+      a.download = "imageTemp1";
       a.href = img.src;
       a.click();
 

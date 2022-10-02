@@ -24,7 +24,7 @@
 				</div>
 
 				<div class="b">
-					<img src="{{url_for('static', filename = 'images/input/imageTemp.jpg')}}" alt="My Image" height="230" width="230">
+					<img src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}" alt="My Image" height="230" width="230">
 					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
 					<img src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}" alt="My Image" height="230" width="230" id="resultImg">
 				</div>
@@ -57,7 +57,7 @@
 	function downloadImg() {
 		var result = document.getElementById("resultImg");
 		var a = document.createElement('a');
-      	a.download = "imageTemp";
+      	a.download = "imageTemp1";
       	a.href = result.src;
       	a.click();
 	}
