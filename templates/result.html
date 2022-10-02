@@ -26,16 +26,14 @@
 				<div class="b">
 					<img src="{{url_for('static', filename = 'images/result/imgOrigin.jpg')}}" alt="My Image" height="230" width="230">
 					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
-					<div id="screenshot">
+					<div class="c" id="screenshot">
 					<img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="make_balloon_text()">
 					</div>
 				</div>
 				<br><br>
 				<div align="right">
-					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
+					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
 				</div>
-				<button type="button" id="save">캡쳐!</button>
-				<div id="temp"></div>
 				<button class = "goto_option_cartoon" onClick="location.href='/option_cartoon'">만화화하기</button>
 		</div>
 	</div>
@@ -80,14 +78,6 @@
 		if(decodeName=="1") result.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
 		else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
 		else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
-	}
-
-	function downloadImg() {
-		var result = document.getElementById("resultImg");
-		var a = document.createElement('a');
-      	a.download = "imageTemp";
-      	a.href = result.src;
-      	a.click();
 	}
 
 	function makeballoon_btn()
@@ -140,7 +130,8 @@
 			img.onmousedown = function(){
 				startDrag(event, this);
 				if(event.button == "2")
-					document.body.removeChild(event.srcElement);
+					targetDiv.removeChild(event.srcElement);
+					//document.body.removeChild(event.srcElement);
 			}
 			img.onclick = function(){
 				make_balloon_text()
@@ -161,13 +152,16 @@
 			textbox.style.top = (y-17) + "px";
 
 			// <body> 자식으로 추가
-			document.body.appendChild(textbox);
+			//document.body.appendChild(textbox);
+			var targetDiv = document.getElementById('screenshot');
+			targetDiv.appendChild(textbox);
 			textbox.style.zIndex = 3;
 
 			// 텍스트 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
 			textbox.onmousedown = function(){
 				if(event.button == "2")
-					document.body.removeChild(event.srcElement);
+					targetDiv.removeChild(event.srcElement);
+					//document.body.removeChild(event.srcElement);
 			}
 			textbox.onclick = function(){
 				make_balloon_text()
@@ -210,6 +204,13 @@
 
 	// 이미지 움직이기
 	function moveDrag(e){
+		if(event.x > 500 || event.x < 300) {
+			return false;
+		}
+		if(event.y > 600 || event.y < 400) {
+			return false;
+		}
+		console.log(event.y);
 	    var e_obj = window.event? window.event : e;
 	    var dmvx = parseInt(e_obj.clientX + img_L);
 	    var dmvy = parseInt(e_obj.clientY + img_T);
@@ -258,9 +259,13 @@
 	}
 
 	$(function() {
-		$("#save").click(function() {
+		$("#download").click(function() {
 			html2canvas($('#screenshot').get(0)).then(function (canvas) {
-				document.getElementById('temp').appendChild(canvas)
+				const textToImg = canvas.toDataURL();
+				var a = document.createElement('a');
+      			a.download = "ResultImage";
+      			a.href = textToImg;
+      			a.click();
 			});
 		});
 	});
