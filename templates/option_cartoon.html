@@ -37,7 +37,7 @@
 </div>
 
 <div id = "button_Bottom">
-	<img class="button_Bottom_img" id="next-image"></img>
+	<img class="button_Bottom_img" id="next-image" onclick="showAlert()"></img>
 </div>
 </div>
 </body>
@@ -82,4 +82,8 @@
 		btnBottom.style.bottom=-nVScroll + 10 +"px";
 		leftbox.style.height = 1311 / windowSize * 100 +"%";
 	}
+
+	function showAlert() {
+		alert('사진을 업로드해주세요');
+	}	
 </script>

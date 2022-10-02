@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Main</title>
 <link href="../static/css/style2.css" rel="stylesheet">
 <style>
@@ -14,7 +15,7 @@
 
 .bottom-right1 {
   position: absolute;
-  top: 1040px;
+  top: 940px;
   /*right: 380px;*/
   float: right;
   border:none; 
@@ -23,7 +24,7 @@
 }
 .bottom-right2 {
   position: absolute;
-  top: 1040px;
+  top: 940px;
   /*right: 700px;*/
   float: right;
   border:none; 
@@ -136,28 +137,29 @@
         <div class="row">
             <div class="cell" style="width: 300px;">
                 <img src="{{url_for('static', filename = 'images/hair_main.png')}}" width="300px" height="300px"/>
-                <div class="bottom-right2"><a href="/option_hair"><i>>> Change Facial Expression</i></a></div>
+                <div class="bottom-right2"><a href="/option_hair"><i>>> Change Hair Color </i></a></div>
                 <!--div class="bottom-right2"><a href="/balloon_example"><i>>> Change Facial Expression</i></a></div-->
             </div>
 
-            <div class="cell" style="width: 300px;">
+            <div class="cell" style="width: 200px;">
                 <img src="{{url_for('static', filename = 'images/image7.jpg')}}" width="300px" height="300px"/>
-                <div class="bottom-right1"><a href="/option_cartoon"><i>>> Cartoonization</i></a></div>
+                <div class="bottom-right1">&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/option_cartoon"><i>>> Cartoonization</i></a></div>
             </div>
 
-            <div class="side" style="width: 500px;">
-                <div class="btn">
-                    {%if userid%}
-                    <a href="/ViewProfile">프로필</a>
-                    <a href="/Settings">설정</a>
-                    <a href="/logout">로그아웃</a>
-                    {%else%}
-                    <button class="button" onClick="location.href='/login'">Login</button>    
-                    <button class="button" onClick="location.href='/signup'">Sign Up</button> 
-                    {%endif%}
-                </div>
-            </div>
+            
         </div>
+        <div class="side" style="width: 500px;">
+          <div class="btn">
+              {%if userid%}
+              <a href="/ViewProfile">프로필</a>
+              <a href="/Settings">설정</a>
+              <a href="/logout">로그아웃</a>
+              {%else%}
+              <button class="button" onClick="location.href='/login'">Login</button>    
+              <button class="button" onClick="location.href='/signup'">Sign Up</button> 
+              {%endif%}
+          </div>
+      </div>
     </div>
 
       

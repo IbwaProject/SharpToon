@@ -56,7 +56,6 @@ body{
 .left_box{
 	display: flex;
 	flex-direction: column;
-
 	flex: 0.25;
 	margin: 10px;
 }
@@ -112,6 +111,11 @@ body{
     margin: 10px 20px;
 }
 
+.select-cartoon > img {
+    height:300px;
+    width:550px;
+    object-fit: fill;
+}
 
 .text-title{
 	text-align : center;
