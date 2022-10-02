@@ -1,12 +1,29 @@
 .splash-page{
-	width : 100vw;
-	height: 100vh;
-	position: fixed;
+	position: fixed; 
+  	top: -50%; 
+ 	left: -50%; 
+  	width: 200%; 
+  	height: 200%;
 
 	/*애니메이션 */
 	animation-name : splash_ani;
 	animation-duration: 3s;
 	animation-fill-mode: fowards;
+}
+
+.splash-page img{
+	position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+body{
+	margin:0px
 }
 
 @keyframes splash_ani{
