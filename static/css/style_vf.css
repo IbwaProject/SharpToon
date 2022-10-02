@@ -14,7 +14,7 @@
 
 body{
 	font-family: 'Happiness-Sans-Title';
-	background-color:rgb(255,239,227);
+	background-color:#cea192;
 	margin: 2vh;
 }
 
@@ -37,6 +37,13 @@ body{
 	flex-direction: column;
 }
 
+input{
+	margin : 0px 0px 10px 0px
+}
+
+.profile2{
+	height: 230px;
+}
 
 .profile-img-box{
 	float: left;
@@ -53,13 +60,19 @@ body{
 	object-fit: cover;
 }
 
-
 .profile-box{
 	float: left;
 
     height: 150px;
     margin: 30px 0px 0px 30px;
     width: 32vw;
+}
+
+.profile-box2{
+	float: left;
+    height: 150px;
+    margin: 30px 0px 0px 30px;
+    width: 66%;
 }
 
 .profile-name{
@@ -78,17 +91,23 @@ body{
 .modify-button-box{
 	position: relative;
 	text-align: right;
-	padding : 30px 0px 0px 0px;
+	padding : 30px 30px 0px 0px;
+}
+
+.modify-button-box2{
+	position: relative;
+	text-align: right;
+	padding : 0px 30px 0px 0px;
 }
 
 .modify-button{
 	text-align: center;
-	padding: 15px 0px;
+	/*padding: 15px 0px;*/
     border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px #402e32;
     font-family: 'Pretendard-Regular';
     font-weight: 600;
-
+	font-size : 20px;
 	width: 100px;
 	height : 50px;
 }

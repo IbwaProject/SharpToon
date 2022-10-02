@@ -17,10 +17,10 @@ from StarGAN import model
 from StarGAN import main as mainPy
 from StarGAN import solver
 
-from WhiteBox.test_code import cartoonize as mainPy4
+#from WhiteBox.test_code import cartoonize as mainPy4
 
-from OpenCV import main as mainPy2
-from CartoonGan import main as mainPy3
+#from OpenCV import main as mainPy2
+#from CartoonGan import main as mainPy3
 
 app = Flask(__name__)
 
