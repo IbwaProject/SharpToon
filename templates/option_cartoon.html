@@ -37,10 +37,10 @@
 		</div>
 	</div>
 </div>
+</div>
 
 <div id = "button_Bottom">
 	<img class="button_Bottom_img" id="next-image" onclick="showAlert()"></img>
-</div>
 </div>
 </body>
 </html>
@@ -63,11 +63,17 @@
 	function drawImg(event) {
 		var nextImage = document.getElementById("next-image");
 		var selectImage = document.getElementById("select-image");
+		nextImage.style.display='block';
 		nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
+		var loadingImg = document.getElementById("loading");
+		var windowHeight = window.innerHeight;
+		var windowWidth = window.innerWidth;
 		
 		if(selectImage.style.display!='none') {
 			nextImage.onclick=null;
 			nextImage.addEventListener("click", function() {
+				loadingImg.style.marginLeft=windowWidth/2 - 200 +"px";
+				loadingImg.style.marginTop = windowHeight/2 - 200 +"px";
 				document.getElementsByClassName('layerPopup')[0].style.display='block';
 				let CartoonOption = event.target.value;
 				window.location.href = "/run_model2?option=" + CartoonOption;
