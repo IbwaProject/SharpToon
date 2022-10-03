@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>만화화 옵션 선택</title>
-	<link rel="stylesheet" href="../static/css/style_Option.css">
+	<link rel="stylesheet" href="../static/css/style_option.css">
 </head>
 
 <body onscroll="scroll()">
@@ -35,10 +35,10 @@
 		</div>
 	</div>
 </div>
+</div>
 
 <div id = "button_Bottom">
 	<img class="button_Bottom_img" id="next-image" onclick="showAlert()"></img>
-</div>
 </div>
 </body>
 </html>
@@ -61,6 +61,8 @@
 	function drawImg(event) {
 		var nextImage = document.getElementById("next-image");
 		var selectImage = document.getElementById("select-image");
+		nextImage.style.display='block';
+		
 		nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
 		
 		if(selectImage.style.display!='none') {
