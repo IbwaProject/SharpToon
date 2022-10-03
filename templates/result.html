@@ -204,13 +204,13 @@
 
 	// 이미지 움직이기
 	function moveDrag(e){
-		if(event.x > 500 || event.x < 300) {
-			return false;
-		}
-		if(event.y > 600 || event.y < 400) {
-			return false;
-		}
-		console.log(event.y);
+		//if(event.x > 500 || event.x < 300) {
+		//	return false;
+		//}
+		//if(event.y > 600 || event.y < 400) {
+		//	return false;
+		//}
+		//console.log(event.y);
 	    var e_obj = window.event? window.event : e;
 	    var dmvx = parseInt(e_obj.clientX + img_L);
 	    var dmvy = parseInt(e_obj.clientY + img_T);
