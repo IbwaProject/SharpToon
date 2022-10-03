@@ -8,7 +8,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
    <div class = "page">
    <div class = "left_box">
       <div style="padding: 0px 0px 0px 20px;" class="Photo">
@@ -60,64 +59,10 @@
       </div>
     </body>
     </html>
-=======
-	<div class = "page">
-	<div class = "left_box">
-		<div style="padding: 0px 0px 0px 20px;" class="Photo">
-			
-		</div>
-	</div>
-	
-	<div style="padding: 50px 0px 0px 20px;" class = "main_box">
-		<div class="main_screen">
-			<body>
-				<div class="a">
-					<h1>&emsp;&emsp;&nbsp;Before&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After</h1>
-				</div>
-
-				<div class="b">
-					<div class = "d">
-					<img src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}" alt="My Image" height="230" width="230" id ="img123">
-					</div>
-					<img src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}" alt="My Image" height="230" width="130">
-					<div class="c" id="screenshot">
-					   <img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="make_balloon_text()">
-					</div>
-				 </div>
-				 <br><br>
-				 <div align="right">
-					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
-				 </div>
-				 <button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>
-		   </div>
-		</div>
-	 
-		</div>
-		<div class = "right_box">
-		   말풍선 추가
-		   <button id = "btn_add_balloon" onclick = "makeballoon_btn()" style= "border-color: white; border-width : 6px">
-			  Balloon
-			  <!-- <img src = "{{url_for('static', filename = 'images/Balloon1.png')}}" alt = "말풍선1" height = "100" width = "100"> -->
-		   </button>
-		   <br>
-	 
-			  <fieldset>
-				 <legend> 텍스트 추가 </legend>
-				 작성할 내용
-				 <input id = "input_text" type = "text" value = "">
-				 <button id = "btn_add_text" onclick = "maketext_btn()" style = "border-color: white; border-width : 6px">
-					TEXT
-				 </button>
-			  </fieldset>
-		</div>
-	 </body>
-	 </html>
->>>>>>> c9e8229783c321f075c1ea5e16c8a50c3fdcc50a
 
 
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-<<<<<<< HEAD
     <script type='text/javascript'>
       var balloonbuttonclick = 0;
       var textbuttonclick = 0;
@@ -142,32 +87,6 @@
    }
 
    function makeballoon_btn()
-=======
-	 <script type='text/javascript'>
-		var balloonbuttonclick = 0;
-		var textbuttonclick = 0;
-		var text_btn = document.getElementById("btn_add_text");
-		var balloon_btn = document.getElementById("btn_add_balloon");
-		var input_text = ""
-	 
-
-	window.onload = function() {
-		var result = document.getElementById("resultImg");
-		let getLink = window.location.search;
-		let getOption = getLink.split('=');
-		let getOnlyOption = getOption[1];
-		let decodeName = decodeURI(getOnlyOption)
-		
-		if (decodeName=="0") result.src="{{url_for('static', filename = 'images/b_iu_whitebox.jpg')}}"
-		else if(decodeName=="1") result.src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}"
-		else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan0.jpg')}}"
-		else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan1.jpg')}}"
-		else if(decodeName=="4") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan2.jpg')}}"
-		else if(decodeName=="5") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan3.jpg')}}"
-	}
-
-	function makeballoon_btn()
->>>>>>> c9e8229783c321f075c1ea5e16c8a50c3fdcc50a
    {
       balloonbuttonclick++;
       console.log(balloonbuttonclick);
