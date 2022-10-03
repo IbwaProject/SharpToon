@@ -1,63 +1,277 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Result</title>
-	<link rel="stylesheet" href="../static/css/result.css">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Result</title>
+   <link rel="stylesheet" href="../static/css/result.css">
 </head>
 
 <body>
-	<div class = "page">
-	<div class = "left_box">
-		<div style="padding: 0px 0px 0px 20px;" class="Photo">
-			
-		</div>
-	</div>
-	
-	<div style="padding: 50px 0px 0px 20px;" class = "main_box">
-		<div class="main_screen">
-			<body>
-				<div class="a">
-					<h1>&emsp;&emsp;&nbsp;Before&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After</h1>
-				</div>
+   <div class = "page">
+   <div class = "left_box">
+      <div style="padding: 0px 0px 0px 20px;" class="Photo">
+         
+      </div>
+   </div>
+   
+   <div style="padding: 50px 0px 0px 20px;" class = "main_box">
+      <div class="main_screen">
+         <body>
+            <div class="a">
+               <h1>&emsp;&emsp;&nbsp;Before&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;After</h1>
+            </div>
 
-				<div class="b">
-					<img src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}" alt="My Image" height="230" width="230">
-					<img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
-					<img src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}" alt="My Image" height="230" width="230" id="resultImg">
-				</div>
-				<br><br>
-				<div align="right">
-					<img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" onclick="downloadImg()">
-				</div>
-			</body>
-		</div>
-	</div>
-</body>
-</html>
+            <div class="b">
+               <div class = "d">
+               <img src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}" alt="My Image" height="230" width="230" id ="img123">
+               </div>
+               <img src="{{url_for('static', filename = 'images/right.png')}}" alt="My Image" height="230" width="130">
+               <div class="c" id="screenshot">
+                  <img src="{{url_for('static', filename = 'images/result/1-images.jpg')}}" alt="My Image" height="230" width="230" id="resultImg" onclick="make_balloon_text()">
+               </div>
+             </div>
+             <br><br>
+             <div align="right">
+               <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
+             </div>
+             <button class = "Photo-Button" onClick="location.href='/main'">메인으로</button>
+         </div>
+      </div>
+    
+      </div>
+      <div class = "right_box">
+         말풍선 추가
+         <button id = "btn_add_balloon" onclick = "makeballoon_btn()" style= "border-color: white; border-width : 6px">
+           Balloon
+           <!-- <img src = "{{url_for('static', filename = 'images/Balloon1.png')}}" alt = "말풍선1" height = "100" width = "100"> -->
+         </button>
+         <br>
+    
+           <fieldset>
+             <legend> 텍스트 추가 </legend>
+             작성할 내용
+             <input id = "input_text" type = "text" value = "">
+             <button id = "btn_add_text" onclick = "maketext_btn()" style = "border-color: white; border-width : 6px">
+               TEXT
+             </button>
+           </fieldset>
+      </div>
+    </body>
+    </html>
 
-<script>
-	window.onload = function() {
-		var result = document.getElementById("resultImg");
-		let getLink = window.location.search;
-		let getOption = getLink.split('=');
-		let getOnlyOption = getOption[1];
-		let decodeName = decodeURI(getOnlyOption)
-		
-		if (decodeName=="0") result.src="{{url_for('static', filename = 'images/b_iu_whitebox.jpg')}}"
-		else if(decodeName=="1") result.src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}"
-		else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan0.jpg')}}"
-		else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan1.jpg')}}"
-		else if(decodeName=="4") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan2.jpg')}}"
-		else if(decodeName=="5") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan3.jpg')}}"
-	}
 
-	function downloadImg() {
-		var result = document.getElementById("resultImg");
-		var a = document.createElement('a');
-      	a.download = "imageTemp1";
-      	a.href = result.src;
-      	a.click();
-	}
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script type='text/javascript'>
+      var balloonbuttonclick = 0;
+      var textbuttonclick = 0;
+      var text_btn = document.getElementById("btn_add_text");
+      var balloon_btn = document.getElementById("btn_add_balloon");
+      var input_text = ""
+    
+
+   window.onload = function() {
+      var result = document.getElementById("resultImg");
+      let getLink = window.location.search;
+      let getOption = getLink.split('=');
+      let getOnlyOption = getOption[1];
+      let decodeName = decodeURI(getOnlyOption)
+      
+      if (decodeName=="0") result.src="{{url_for('static', filename = 'images/b_iu_whitebox.jpg')}}"
+      else if(decodeName=="1") result.src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}"
+      else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan0.jpg')}}"
+      else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan1.jpg')}}"
+      else if(decodeName=="4") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan2.jpg')}}"
+      else if(decodeName=="5") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan3.jpg')}}"
+   }
+
+   function makeballoon_btn()
+   {
+      balloonbuttonclick++;
+      console.log(balloonbuttonclick);
+      
+      textbuttonclick = 0;
+      text_btn.style.borderColor = 'white';
+
+      console.log('Hello1');
+      if(event.button != "1") return; //클릭의 event.button값은 무조건 0
+
+      if(!(balloonbuttonclick % 2)) {
+         balloon_btn.style.borderColor = 'white';
+      }
+      else{
+         balloon_btn.style.borderColor = 'green';
+      }
+   }
+
+   function make_balloon_text()
+   {   
+      // 클릭된 좌표값
+      var x = event.x;
+      var y = event.y;
+
+      // 말풍선 버튼이 클릭되었을때
+      if (balloonbuttonclick % 2){
+         //이미지 태그 생성
+         console.log('이미지 생성');
+         var targetDiv = document.getElementById('screenshot');
+         var img = document.createElement("img");
+         img.setAttribute("src", "{{url_for('static', filename = 'images/Balloon1.png')}}");
+         img.setAttribute("alt", "말풍선1");
+         img.setAttribute("width", "70");
+         img.setAttribute("height", "70");
+
+         // 이미지 태그의 좌표 지정
+         img.style.position = "absolute";
+         img.style.left = (x-(img.width/2)) + "px";
+         img.style.top = (y-(img.height/2)) + "px";
+
+         // <body> 자식으로 이미지 추가
+         //document.body.appendChild(img);
+         targetDiv.appendChild(img);
+         img.style.zIndex = 2;
+         
+         // 이미지 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
+         img.onmousedown = function(){
+            startDrag(event, this);
+            if(event.button == "2")
+               targetDiv.removeChild(event.srcElement);
+               //document.body.removeChild(event.srcElement);
+         }
+         img.onclick = function(){
+            make_balloon_text()
+         }
+      }
+else if(textbuttonclick % 2){
+         // 텍스트 태그 생성
+         var textbox = document.createElement("h3");
+         var text = document.createTextNode(input_text);
+         textbox.appendChild(text);
+
+         console.log(x);
+
+         //텍스트 태그 좌표 지정
+         textbox.style.position= "absolute";
+         textbox.style.left = (x-15) + "px";
+         textbox.style.top = (y-17) + "px";
+
+         // <body> 자식으로 추가
+         //document.body.appendChild(textbox);
+         var targetDiv = document.getElementById('screenshot');
+         targetDiv.appendChild(textbox);
+         textbox.style.zIndex = 3;
+
+         // 텍스트 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
+         textbox.onmousedown = function(){
+            if(event.button == "2")
+               targetDiv.removeChild(event.srcElement);
+               //document.body.removeChild(event.srcElement);
+         }
+         textbox.onclick = function(){
+            make_balloon_text()
+         }
+      }
+   }
+   var img_L = 0;
+   var img_T = 0;
+   var resize_L = 0;
+   var resize_T = 0;
+   var img_W = 0;
+   var img_H = 0;
+   var key = false;
+   var targetObj;
+
+   window.addEventListener("keydown", (e) => {
+       if(e.keyCode==17 || e.keyCode==25) {
+           key=true;
+       }
+   });
+
+   window.addEventListener("keyup", (e) => {
+       key=false;
+   });
+
+   function resize() {
+       resize_X=event.x - resize_L;
+       resize_Y=event.y - resize_T;
+       targetObj.width=img_W + resize_X;
+       targetObj.height=img_H + resize_Y;
+   }
+
+   function getLeft(o){
+       return parseInt(o.style.left.replace('px', ''));
+   }
+   function getTop(o){
+       return parseInt(o.style.top.replace('px', ''));
+   }
+
+   // 이미지 움직이기
+   function moveDrag(e){
+      //if(event.x > 500 || event.x < 300) {
+      //   return false;
+      //}
+      //if(event.y > 600 || event.y < 400) {
+      //   return false;
+      //}
+      //console.log(event.y);
+       var e_obj = window.event? window.event : e;
+       var dmvx = parseInt(e_obj.clientX + img_L);
+       var dmvy = parseInt(e_obj.clientY + img_T);
+       targetObj.style.left = dmvx +"px";
+       targetObj.style.top = dmvy +"px";
+       return false;
+   }
+
+   // 드래그 시작
+   function startDrag(e, obj){
+      balloonbuttonclick = 0;
+       targetObj = obj;
+       var e_obj = window.event? window.event : e;
+       img_L = getLeft(obj) - e_obj.clientX;
+       img_T = getTop(obj) - e_obj.clientY;
+       img_W = targetObj.width;
+       img_H = targetObj.height;
+       resize_L = e_obj.clientX;
+       resize_T = e_obj.clientY;
+       if(key)
+           document.onmousemove = resize;
+       else document.onmousemove = moveDrag;
+       document.onmouseup = stopDrag;
+       if(e_obj.preventDefault)e_obj.preventDefault(); 
+   }
+
+   // 드래그 멈추기
+   function stopDrag(){
+       document.onmousemove = null;
+       document.onmouseup = null;
+   }
+
+   function maketext_btn()
+   {
+      textbuttonclick++;
+      
+      balloonbuttonclick = 0;
+      balloon_btn.style.borderColor = 'white';
+      if(!(textbuttonclick % 2)) {
+         text_btn.style.borderColor = 'white';
+      }
+      else{
+         text_btn.style.borderColor = 'green';
+      }
+      input_text = document.getElementById("input_text").value;
+   }
+
+   $(function() {
+      $("#download").click(function() {
+         html2canvas($('#screenshot').get(0)).then(function (canvas) {
+            const textToImg = canvas.toDataURL();
+            var screen = document.getElementById("screenshot");
+            var a = document.createElement('a');
+               a.download = "ResultImage";
+               a.href = textToImg;
+               a.click();
+         });
+      });
+   });
 </script>
