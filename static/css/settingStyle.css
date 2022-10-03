@@ -14,7 +14,7 @@
 
 body{
 	font-family: 'Happiness-Sans-Title';
-	background-color:rgb(255,239,227);
+	background-color:#402E32;
 	margin: 2vh;
 }
 
@@ -54,7 +54,7 @@ body{
 }
 
 .setting-title{
-	background-color: lightgrey;
+	background-color: #CEA192;
 	width : 35vw;
 	position: relative;
 	font-size : 26px;
@@ -71,5 +71,5 @@ body{
 }
 
 .setting-content:hover {
-    background-color:#E6EEF2;
+    background-color:#FFC672;
   }

@@ -9,7 +9,9 @@
 
 <body onscroll="scroll()">
 	<div class="layerPopup">
-		<div class="spinner"></div>
+		<div class="spinner">
+			<img class="loading" id="loading" src="{{url_for('static',filename='images/loadingHair.gif')}}">
+		</div>
 	</div>
 
 	<div class = "page">
@@ -68,10 +70,14 @@ function scroll() {
 function drawImg(event) {
 	nextImage.style.display='block';
     nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
-	
+	var loadingImg = document.getElementById("loading");
+	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth;
 	if(selectImage.style.display!='none') {
 		nextImage.onclick=null;
 		nextImage.addEventListener("click", function() {
+			loadingImg.style.marginLeft=windowWidth/2 - 200 +"px";
+			loadingImg.style.marginTop = windowHeight/2 - 200 +"px";
 			document.getElementsByClassName('layerPopup')[0].style.display='block';
 			let hairOption = event.target.value;
             window.location.href = "/run_model?option=" + hairOption;
