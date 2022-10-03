@@ -203,7 +203,6 @@
        return parseInt(o.style.top.replace('px', ''));
    }
 
-<<<<<<< HEAD
    // 이미지 움직이기
    function moveDrag(e){
       //if(event.x > 500 || event.x < 300) {
@@ -220,24 +219,6 @@
        targetObj.style.top = dmvy +"px";
        return false;
    }
-=======
-	// 이미지 움직이기
-	function moveDrag(e){
-		//if(event.x > 500 || event.x < 300) {
-		//	return false;
-		//}
-		//if(event.y > 600 || event.y < 400) {
-		//	return false;
-		//}
-		//console.log(event.y);
-	    var e_obj = window.event? window.event : e;
-	    var dmvx = parseInt(e_obj.clientX + img_L);
-	    var dmvy = parseInt(e_obj.clientY + img_T);
-	    targetObj.style.left = dmvx +"px";
-	    targetObj.style.top = dmvy +"px";
-	    return false;
-	}
->>>>>>> 31e6fc92e110dab26847b4aeff380e15e07f1d09
 
    // 드래그 시작
    function startDrag(e, obj){
