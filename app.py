@@ -17,10 +17,10 @@ from StarGAN import model
 from StarGAN import main as mainPy
 from StarGAN import solver
 
-from WhiteBox.test_code import cartoonize as mainPy4
+#from WhiteBox.test_code import cartoonize as mainPy4
 
-from OpenCV import main as mainPy2
-from CartoonGan import main as mainPy3
+#from OpenCV import main as mainPy2
+#from CartoonGan import main as mainPy3
 
 app = Flask(__name__)
 
@@ -29,8 +29,8 @@ app = Flask(__name__)
 def MainSplash():
    celeba_image_dir = 'static/images/input'
    result_dir = 'static/images/result'
-   if os.path.exists(celeba_image_dir) :
-      shutil.rmtree(celeba_image_dir)
+   #if os.path.exists(celeba_image_dir) :
+   #   shutil.rmtree(celeba_image_dir)
    if os.path.exists(result_dir) :
       shutil.rmtree(result_dir)
    return render_template('MainSplash.html')

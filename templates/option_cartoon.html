@@ -46,52 +46,54 @@
 </html>
 
 <script>
-	window.onload = function() {
-		
-		var selectImage = document.getElementById("select-image");
-		var nextImage = document.getElementById("next-image");
 
+window.onload = function() {
+	var selectImage = document.getElementById("select-image");
+    let getLink = window.location.search;
+    let getOption = getLink.split('=');
+    let getOnlyOption = getOption[1];
+    let decodeName = decodeURI(getOnlyOption);
+	console.log(decodeName);
+	if(decodeName=="1") selectImage.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
+    else if(decodeName=="2") selectImage.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
+    else if(decodeName=="3") selectImage.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
+	else {
 		try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}"}
-		catch{selectImage.src=null}; //수정 필요
-		console.log(selectImage.src);
+		catch{selectImage.src=null}; 
 	}
+}
 
-	window.onresize = function(event){
-		scroll();
-	}
+window.onresize = function(event){
+	scroll();
+}
 
-	function drawImg(event) {
-		var nextImage = document.getElementById("next-image");
-		var selectImage = document.getElementById("select-image");
-		nextImage.style.display='block';
-		nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
-		var loadingImg = document.getElementById("loading");
-		var windowHeight = window.innerHeight;
-		var windowWidth = window.innerWidth;
+function drawImg(event) {
+	var nextImage = document.getElementById("next-image");
+	var selectImage = document.getElementById("select-image");
+	nextImage.style.display='block';
 		
-		if(selectImage.style.display!='none') {
-			nextImage.onclick=null;
-			nextImage.addEventListener("click", function() {
-				loadingImg.style.marginLeft=windowWidth/2 - 200 +"px";
-				loadingImg.style.marginTop = windowHeight/2 - 200 +"px";
-				document.getElementsByClassName('layerPopup')[0].style.display='block';
-				let CartoonOption = event.target.value;
-				window.location.href = "/run_model2?option=" + CartoonOption;
-			});
-		}
+	nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
+		
+	if(selectImage.style.display!='none') {
+		nextImage.onclick=null;
+		nextImage.addEventListener("click", function() {
+			document.getElementsByClassName('layerPopup')[0].style.display='block';
+			let CartoonOption = event.target.value;
+			window.location.href = "/run_model2?option=" + CartoonOption;
+		});
 	}
+}
 
-	function scroll() {
-		var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
-		var windowSize = window.innerHeight;
-		var btnBottom = document.getElementById("button_Bottom");
-		var leftbox = document.getElementById("leftBox");
+function scroll() {
+	var nVScroll = document.documentElement.scrollTop || document.body.scrollTop;
+	var windowSize = window.innerHeight;
+	var btnBottom = document.getElementById("button_Bottom");
+	var leftbox = document.getElementById("leftBox");
+	btnBottom.style.bottom=-nVScroll + 10 +"px";
+	leftbox.style.height = 1311 / windowSize * 100 +"%";
+}
 
-		btnBottom.style.bottom=-nVScroll + 10 +"px";
-		leftbox.style.height = 1311 / windowSize * 100 +"%";
-	}
-
-	function showAlert() {
-		alert('사진을 업로드해주세요');
-	}	
+function showAlert() {
+	alert('사진을 업로드해주세요');
+}	
 </script>
