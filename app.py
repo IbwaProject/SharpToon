@@ -101,9 +101,13 @@ def balloon_example():
 def option_hair():
    return render_template('option_hair.html')
 
-@app.route('/option_cartoon')
+@app.route('/option_cartoon', methods =['GET', 'POST'])
 def option_cartoon():
-   return render_template('option_cartoon.html')
+   if request.method == 'GET':
+      value = request.args.get('decodename')
+      value = str(value)
+      print(value)
+   return render_template('option_cartoon.html', decodename = value)
 
 @app.route('/select_image')
 def select_image():

@@ -35,7 +35,11 @@
             <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
             </div>
-            <button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>
+            <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
+               <input type="hidden" name = "decodename"/>
+               <!--<button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>-->
+               <input type = "button" class = "Photo-Button" onclick ="gocartoon()" value = "만화화하기"/>
+            </form>
             <button class = "Photo-Button" onClick="location.href='/main'">메인으로</button>
       </div>
    </div>
@@ -69,13 +73,14 @@
    var text_btn = document.getElementById("btn_add_text");
    var balloon_btn = document.getElementById("btn_add_balloon");
    var input_text = ""
+   let decodeName = ""
 
    window.onload = function() {
       var result = document.getElementById("resultImg");
       let getLink = window.location.search;
       let getOption = getLink.split('=');
       let getOnlyOption = getOption[1];
-      let decodeName = decodeURI(getOnlyOption)
+      decodeName = decodeURI(getOnlyOption)
 
       if(decodeName=="1") result.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
       else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
@@ -272,5 +277,12 @@
          });
       });
    });
-   
+ 
+ function gocartoon()
+ {
+   var gocartoonForm = document.gocartoon_form;
+   gocartoon_form.decodename.value = decodeName; // decodeName 변수 저장
+
+   gocartoonForm.submit();
+ }
 </script>
