@@ -35,7 +35,7 @@
             <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
             </div>
-            <form method = "post" name = "gocartoon_form" action ="/option_cartoon">
+            <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
                <input type="hidden" name = "decodename"/>
                <!--<button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>-->
                <input type = "button" class = "Photo-Button" onclick ="gocartoon()" value = "만화화하기"/>

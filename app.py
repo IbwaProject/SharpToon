@@ -103,13 +103,11 @@ def option_hair():
 
 @app.route('/option_cartoon', methods =['GET', 'POST'])
 def option_cartoon():
-   if request.method == 'POST':
-      value = request.form['decodename']
-      # 잘 전달되었는지 확인용 (삭제해두댐)
+   if request.method == 'GET':
+      value = request.args.get('decodename')
       value = str(value)
       print(value)
-      # 여기까지
-   return render_template('option_cartoon.html')
+   return render_template('option_cartoon.html', decodename = value)
 
 @app.route('/select_image')
 def select_image():
