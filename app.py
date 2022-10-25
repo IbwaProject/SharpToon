@@ -106,7 +106,13 @@ def option_cartoon():
    if request.method == 'GET':
       value = request.args.get('decodename')
       value = str(value)
-      print(value)
+
+      if value=="1" :
+         os.rename("static/images/result/imgBlack.jpg", "static/images/input/imageTemp1.jpg")
+      elif value=="2" :
+         os.rename("static/images/result/imgBlond.jpg", "static/images/input/imageTemp1.jpg")
+      elif value=="3" :
+         os.rename("static/images/result/imgBrown.jpg", "static/images/input/imageTemp1.jpg")
    return render_template('option_cartoon.html', decodename = value)
 
 @app.route('/select_image')

@@ -52,16 +52,11 @@ window.onload = function() {
     let getOnlyOption = getOption[1];
     let decodeName = decodeURI(getOnlyOption);
 	console.log(decodeName);
-	if(decodeName=="1") selectImage.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
-    else if(decodeName=="2") selectImage.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
-    else if(decodeName=="3") selectImage.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
-	else {
-		try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}"}
-		catch{selectImage.src=null}; 
-	}
+	try{selectImage.src="{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}"}
+	catch{selectImage.src=null}; 
 }
 
-window.onresize = function(event){
+window.onresize = function(event) {
 	scroll();
 }
 
@@ -70,7 +65,7 @@ function drawImg(event) {
 	var selectImage = document.getElementById("select-image");
 	nextImage.style.display='block';
 		
-	nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}"
+	nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
 		
 	if(selectImage.style.display!='none') {
 		nextImage.onclick=null;
@@ -93,5 +88,5 @@ function scroll() {
 
 function showAlert() {
 	alert('사진을 업로드해주세요');
-}	
+}
 </script>

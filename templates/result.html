@@ -35,7 +35,6 @@
             <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
             </div>
-            <button class = "Photo-Button" onclick="GoCartoon()">만화화하기</button>
             <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
                <input type="hidden" name = "decodename"/>
                <!--<button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>-->
@@ -86,10 +85,6 @@
       if(decodeName=="1") result.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
       else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
       else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
-   }
-
-   function GoCartoon() {
-      location.href= "/option_cartoon?option=" + decodeName;
    }
 
    function makeballoon_btn()
