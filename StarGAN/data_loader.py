@@ -61,7 +61,10 @@ class CelebA(data.Dataset):
         dataset = self.train_dataset if self.mode == 'train' else self.test_dataset
         filename, label = dataset[index]
         image = Image.open(os.path.join(self.image_dir, filename))
-        return self.transform(image), torch.FloatTensor(label)
+
+        img_resize = image.resize((200, 200),Image.LANCZOS)
+
+        return self.transform(img_resize), torch.FloatTensor(label)
 
     def __len__(self):
         """Return the number of images."""

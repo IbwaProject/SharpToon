@@ -36,6 +36,12 @@
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
             </div>
             <button class = "Photo-Button" onclick="GoCartoon()">만화화하기</button>
+            <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
+               <input type="hidden" name = "decodename"/>
+               <!--<button class = "Photo-Button" onClick="location.href='/option_cartoon'">만화화하기</button>-->
+               <input type = "button" class = "Photo-Button" onclick ="gocartoon()" value = "만화화하기"/>
+            </form>
+            <button class = "Photo-Button" onClick="location.href='/main'">메인으로</button>
       </div>
    </div>
 
@@ -68,7 +74,7 @@
    var text_btn = document.getElementById("btn_add_text");
    var balloon_btn = document.getElementById("btn_add_balloon");
    var input_text = ""
-   let decodeName;
+   let decodeName = ""
 
    window.onload = function() {
       var result = document.getElementById("resultImg");
@@ -276,4 +282,12 @@
          });
       });
    });
+ 
+ function gocartoon()
+ {
+   var gocartoonForm = document.gocartoon_form;
+   gocartoon_form.decodename.value = decodeName; // decodeName 변수 저장
+
+   gocartoonForm.submit();
+ }
 </script>
