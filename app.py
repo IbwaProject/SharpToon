@@ -29,8 +29,8 @@ app = Flask(__name__)
 def MainSplash():
    celeba_image_dir = 'static/images/input'
    result_dir = 'static/images/result'
-   #if os.path.exists(celeba_image_dir) :
-   #   shutil.rmtree(celeba_image_dir)
+   if os.path.exists(celeba_image_dir) :
+      shutil.rmtree(celeba_image_dir)
    if os.path.exists(result_dir) :
       shutil.rmtree(result_dir)
    return render_template('MainSplash.html')
