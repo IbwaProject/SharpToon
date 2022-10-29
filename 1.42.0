@@ -1,0 +1,236 @@
+Collecting azureml-sdk[automl,explain,notebooks]
+  Downloading azureml_sdk-1.47.0-py3-none-any.whl (2.7 kB)
+Collecting azureml-dataset-runtime[fuse]~=1.47.0
+  Downloading azureml_dataset_runtime-1.47.0-py3-none-any.whl (2.2 kB)
+Collecting azureml-train-core~=1.47.0
+  Downloading azureml_train_core-1.47.0-py3-none-any.whl (8.6 MB)
+     ---------------------------------------- 8.6/8.6 MB 3.9 MB/s eta 0:00:00
+Collecting azureml-pipeline~=1.47.0
+  Downloading azureml_pipeline-1.47.0-py3-none-any.whl (2.4 kB)
+Collecting azureml-train-automl-client~=1.47.0
+  Downloading azureml_train_automl_client-1.47.0-py3-none-any.whl (136 kB)
+     -------------------------------------- 136.3/136.3 kB 2.7 MB/s eta 0:00:00
+Collecting azureml-core~=1.47.0
+  Downloading azureml_core-1.47.0-py3-none-any.whl (3.1 MB)
+     ---------------------------------------- 3.1/3.1 MB 6.3 MB/s eta 0:00:00
+Collecting azureml-train-automl~=1.47.0
+  Downloading azureml_train_automl-1.47.0-py3-none-any.whl (2.3 kB)
+Collecting azureml-widgets~=1.47.0
+  Downloading azureml_widgets-1.47.0-py3-none-any.whl (14.1 MB)
+     ---------------------------------------- 14.1/14.1 MB 6.7 MB/s eta 0:00:00
+Collecting azureml-contrib-notebook~=1.47.0
+  Downloading azureml_contrib_notebook-1.47.0-py3-none-any.whl (28 kB)
+Collecting azureml-explain-model~=1.47.0
+  Downloading azureml_explain_model-1.47.0-py3-none-any.whl (20 kB)
+Collecting ipykernel
+  Downloading ipykernel-6.16.2-py3-none-any.whl (138 kB)
+     -------------------------------------- 138.5/138.5 kB 8.6 MB/s eta 0:00:00
+Collecting ipython
+  Downloading ipython-7.34.0-py3-none-any.whl (793 kB)
+     -------------------------------------- 793.8/793.8 kB 5.6 MB/s eta 0:00:00
+Collecting azureml-pipeline-core~=1.47.0
+  Downloading azureml_pipeline_core-1.47.0-py3-none-any.whl (312 kB)
+     -------------------------------------- 312.8/312.8 kB 6.4 MB/s eta 0:00:00
+Collecting papermill<2
+  Downloading papermill-1.2.1-py2.py3-none-any.whl (31 kB)
+Collecting nbconvert<6
+  Downloading nbconvert-5.6.1-py2.py3-none-any.whl (455 kB)
+     -------------------------------------- 455.1/455.1 kB 5.7 MB/s eta 0:00:00
+Collecting jupyter-client<7
+  Downloading jupyter_client-6.1.12-py3-none-any.whl (112 kB)
+     -------------------------------------- 112.7/112.7 kB 6.8 MB/s eta 0:00:00
+Collecting msrestazure<=0.6.4,>=0.4.33
+  Downloading msrestazure-0.6.4-py2.py3-none-any.whl (40 kB)
+     ---------------------------------------- 40.5/40.5 kB ? eta 0:00:00
+Collecting pytz
+  Downloading pytz-2022.5-py2.py3-none-any.whl (500 kB)
+     -------------------------------------- 500.7/500.7 kB 6.2 MB/s eta 0:00:00
+Collecting humanfriendly<11.0,>=4.7
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+     ---------------------------------------- 86.8/86.8 kB 2.5 MB/s eta 0:00:00
+Collecting jsonpickle<3.0.0
+  Downloading jsonpickle-2.2.0-py2.py3-none-any.whl (39 kB)
+Collecting python-dateutil<3.0.0,>=2.7.3
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     -------------------------------------- 247.7/247.7 kB 3.8 MB/s eta 0:00:00
+Collecting docker<7.0.0
+  Downloading docker-6.0.0-py3-none-any.whl (147 kB)
+     -------------------------------------- 147.2/147.2 kB 8.6 MB/s eta 0:00:00
+Collecting azure-mgmt-keyvault<11.0.0,>=0.40.0
+  Downloading azure_mgmt_keyvault-10.1.0-py3-none-any.whl (605 kB)
+     -------------------------------------- 605.9/605.9 kB 6.3 MB/s eta 0:00:00
+Collecting pathspec<1.0.0
+  Downloading pathspec-0.10.1-py3-none-any.whl (27 kB)
+Collecting msal-extensions<=1.0.0,>=0.3.0
+  Downloading msal_extensions-1.0.0-py2.py3-none-any.whl (19 kB)
+Collecting azure-common<2.0.0,>=1.1.12
+  Downloading azure_common-1.1.28-py2.py3-none-any.whl (14 kB)
+Collecting packaging<22.0,>=20.0
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting adal<=1.2.7,>=1.2.0
+  Downloading adal-1.2.7-py2.py3-none-any.whl (55 kB)
+     ---------------------------------------- 55.5/55.5 kB ? eta 0:00:00
+Collecting pkginfo
+  Downloading pkginfo-1.8.3-py2.py3-none-any.whl (26 kB)
+Collecting PyJWT<3.0.0
+  Downloading PyJWT-2.6.0-py3-none-any.whl (20 kB)
+Collecting azure-mgmt-storage<21.0.0,>=16.0.0
+  Downloading azure_mgmt_storage-20.1.0-py3-none-any.whl (2.3 MB)
+     ---------------------------------------- 2.3/2.3 MB 6.2 MB/s eta 0:00:00
+Collecting msal<2.0.0,>=1.15.0
+  Downloading msal-1.20.0-py2.py3-none-any.whl (90 kB)
+     ---------------------------------------- 90.0/90.0 kB ? eta 0:00:00
+Collecting knack~=0.10.0
+  Downloading knack-0.10.0-py3-none-any.whl (61 kB)
+     ---------------------------------------- 61.0/61.0 kB 3.4 MB/s eta 0:00:00
+Collecting argcomplete<3
+  Downloading argcomplete-2.0.0-py2.py3-none-any.whl (37 kB)
+Collecting cryptography!=1.9,!=2.0.*,!=2.1.*,!=2.2.*,<41
+  Downloading cryptography-38.0.1-cp36-abi3-win_amd64.whl (2.4 MB)
+     ---------------------------------------- 2.4/2.4 MB 5.7 MB/s eta 0:00:00
+Requirement already satisfied: urllib3<2.0.0,>=1.23 in c:\users\subin\documents\github\ibwaproject\env2\lib\site-packages (from azureml-core~=1.47.0->azureml-sdk[automl,explain,notebooks]) (1.26.12)
+Collecting backports.tempfile
+  Downloading backports.tempfile-1.0-py2.py3-none-any.whl (4.4 kB)
+Collecting pyopenssl<23.0.0
+  Downloading pyOpenSSL-22.1.0-py3-none-any.whl (57 kB)
+     ---------------------------------------- 57.0/57.0 kB ? eta 0:00:00
+Collecting azure-mgmt-resource<22.0.0,>=15.0.0
+  Downloading azure_mgmt_resource-21.2.1-py3-none-any.whl (2.3 MB)
+     ---------------------------------------- 2.3/2.3 MB 6.0 MB/s eta 0:00:00
+Collecting azure-mgmt-containerregistry<11,>=8.2.0
+  Downloading azure_mgmt_containerregistry-10.0.0-py3-none-any.whl (1.2 MB)
+     ---------------------------------------- 1.2/1.2 MB 6.4 MB/s eta 0:00:00
+Collecting azure-graphrbac<1.0.0,>=0.40.0
+  Downloading azure_graphrbac-0.61.1-py2.py3-none-any.whl (141 kB)
+     -------------------------------------- 141.4/141.4 kB 8.2 MB/s eta 0:00:00
+Collecting azure-mgmt-authorization<3,>=0.40.0
+  Downloading azure_mgmt_authorization-2.0.0-py2.py3-none-any.whl (465 kB)
+     -------------------------------------- 465.2/465.2 kB 5.8 MB/s eta 0:00:00
+Collecting msrest<=0.7.1,>=0.5.1
+  Downloading msrest-0.7.1-py3-none-any.whl (85 kB)
+     ---------------------------------------- 85.4/85.4 kB 4.7 MB/s eta 0:00:00
+Collecting ndg-httpsclient<=0.5.1
+  Downloading ndg_httpsclient-0.5.1-py3-none-any.whl (34 kB)
+Collecting jmespath<2.0.0
+  Downloading jmespath-1.0.1-py3-none-any.whl (20 kB)
+Requirement already satisfied: requests[socks]<3.0.0,>=2.19.1 in c:\users\subin\documents\github\ibwaproject\env2\lib\site-packages (from azureml-core~=1.47.0->azureml-sdk[automl,explain,notebooks]) (2.28.1)
+Collecting SecretStorage<4.0.0
+  Downloading SecretStorage-3.3.3-py3-none-any.whl (15 kB)
+Collecting paramiko<3.0.0,>=2.0.8
+  Downloading paramiko-2.11.0-py2.py3-none-any.whl (212 kB)
+     -------------------------------------- 212.9/212.9 kB 6.5 MB/s eta 0:00:00
+Collecting contextlib2<22.0.0
+  Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
+Collecting azure-core<2.0.0
+  Downloading azure_core-1.26.0-py3-none-any.whl (178 kB)
+     -------------------------------------- 178.9/178.9 kB 5.4 MB/s eta 0:00:00
+Collecting azureml-dataprep<4.6.0a,>=4.5.0a
+  Downloading azureml_dataprep-4.5.7-py3-none-any.whl (43.4 MB)
+     ---------------------------------------- 43.4/43.4 MB 5.3 MB/s eta 0:00:00
+Requirement already satisfied: numpy!=1.19.4 in c:\users\subin\documents\github\ibwaproject\env2\lib\site-packages (from azureml-dataset-runtime[fuse]~=1.47.0->azureml-sdk[automl,explain,notebooks]) (1.21.6)
+Collecting pyarrow<=9.0.0,>=0.17.0
+  Downloading pyarrow-9.0.0-cp37-cp37m-win_amd64.whl (19.5 MB)
+     ---------------------------------------- 19.5/19.5 MB 5.5 MB/s eta 0:00:00
+Collecting fusepy<4.0.0,>=3.0.1
+  Downloading fusepy-3.0.1.tar.gz (11 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting azureml-interpret~=1.47.0
+  Downloading azureml_interpret-1.47.0-py3-none-any.whl (52 kB)
+     ---------------------------------------- 52.0/52.0 kB ? eta 0:00:00
+Collecting azureml-pipeline-steps~=1.47.0
+  Downloading azureml_pipeline_steps-1.47.0-py3-none-any.whl (69 kB)
+     ---------------------------------------- 69.3/69.3 kB 3.9 MB/s eta 0:00:00
+Collecting azureml-automl-runtime~=1.47.0
+  Downloading azureml_automl_runtime-1.47.0-py3-none-any.whl (1.8 MB)
+     ---------------------------------------- 1.8/1.8 MB 4.1 MB/s eta 0:00:00
+Collecting azureml-automl-core~=1.47.0
+  Downloading azureml_automl_core-1.47.0-py3-none-any.whl (242 kB)
+     -------------------------------------- 242.2/242.2 kB 7.5 MB/s eta 0:00:00
+Collecting azureml-train-automl-runtime~=1.47.0
+  Downloading azureml_train_automl_runtime-1.47.0-py3-none-any.whl (330 kB)
+     -------------------------------------- 330.7/330.7 kB 4.1 MB/s eta 0:00:00
+Collecting azureml-telemetry~=1.47.0
+  Downloading azureml_telemetry-1.47.0-py3-none-any.whl (30 kB)
+Collecting azureml-train-restclients-hyperdrive~=1.47.0
+  Downloading azureml_train_restclients_hyperdrive-1.47.0-py3-none-any.whl (18 kB)
+Collecting jinja2<=2.11.2
+  Downloading Jinja2-2.11.2-py2.py3-none-any.whl (125 kB)
+     -------------------------------------- 125.8/125.8 kB 7.2 MB/s eta 0:00:00
+Collecting azure-storage-blob>=12.6.0
+  Downloading azure_storage_blob-12.14.1-py3-none-any.whl (383 kB)
+     -------------------------------------- 383.2/383.2 kB 8.1 MB/s eta 0:00:00
+Collecting ipywidgets<8.0.0,>=7.0.0
+  Downloading ipywidgets-7.7.2-py2.py3-none-any.whl (123 kB)
+     -------------------------------------- 123.4/123.4 kB 7.5 MB/s eta 0:00:00
+Collecting markupsafe<2.1.0
+  Downloading MarkupSafe-2.0.1-cp37-cp37m-win_amd64.whl (14 kB)
+Collecting importlib-metadata<5,>=0.23
+  Downloading importlib_metadata-4.13.0-py3-none-any.whl (23 kB)
+Requirement already satisfied: typing-extensions>=4.0.1 in c:\users\subin\documents\github\ibwaproject\env2\lib\site-packages (from azure-core<2.0.0->azureml-core~=1.47.0->azureml-sdk[automl,explain,notebooks]) (4.4.0)
+Requirement already satisfied: six>=1.11.0 in c:\users\subin\documents\github\ibwaproject\env2\lib\site-packages (from azure-core<2.0.0->azureml-core~=1.47.0->azureml-sdk[automl,explain,notebooks]) (1.16.0)
+Collecting azure-mgmt-core<2.0.0,>=1.2.0
+  Downloading azure_mgmt_core-1.3.2-py3-none-any.whl (26 kB)
+Collecting onnx<=1.12.0,>=1.6.0
+  Downloading onnx-1.12.0-cp37-cp37m-win_amd64.whl (11.5 MB)
+     ---------------------------------------- 11.5/11.5 MB 3.4 MB/s eta 0:00:00
+Collecting dataclasses<=0.8,>=0.6
+  Downloading dataclasses-0.6-py3-none-any.whl (14 kB)
+Collecting pmdarima==1.7.1
+  Downloading pmdarima-1.7.1-cp37-cp37m-win_amd64.whl (607 kB)
+     -------------------------------------- 608.0/608.0 kB 5.5 MB/s eta 0:00:00
+Collecting skl2onnx==1.4.9
+  Downloading skl2onnx-1.4.9-py2.py3-none-any.whl (114 kB)
+     -------------------------------------- 114.6/114.6 kB 6.5 MB/s eta 0:00:00
+Collecting smart-open<=1.9.0
+  Downloading smart_open-1.9.0.tar.gz (70 kB)
+     ---------------------------------------- 70.6/70.6 kB 3.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting psutil<6.0.0,>=5.2.2
+  Downloading psutil-5.9.3-cp37-cp37m-win_amd64.whl (247 kB)
+     -------------------------------------- 247.9/247.9 kB 5.1 MB/s eta 0:00:00
+Collecting dotnetcore2<4.0.0,>=3.0.0
+  Downloading dotnetcore2-3.1.23-py3-none-win_amd64.whl (31.7 MB)
+     ---------------------------------------- 31.7/31.7 MB 5.7 MB/s eta 0:00:00
+Collecting onnxconverter-common<=1.6.0,>=1.4.2
+  Downloading onnxconverter_common-1.6.0-py2.py3-none-any.whl (43 kB)
+     ---------------------------------------- 43.2/43.2 kB 2.1 MB/s eta 0:00:00
+Collecting botocore<=1.23.19
+  Downloading botocore-1.23.19-py3-none-any.whl (8.4 MB)
+     ---------------------------------------- 8.4/8.4 MB 5.6 MB/s eta 0:00:00
+Collecting joblib==0.14.1
+  Downloading joblib-0.14.1-py2.py3-none-any.whl (294 kB)
+     -------------------------------------- 294.9/294.9 kB 9.2 MB/s eta 0:00:00
+Collecting protobuf<=3.20.1
+  Downloading protobuf-3.20.1-cp37-cp37m-win_amd64.whl (905 kB)
+     -------------------------------------- 905.1/905.1 kB 5.7 MB/s eta 0:00:00
+Collecting statsmodels<0.12,>=0.11.0
+  Downloading statsmodels-0.11.1-cp37-none-win_amd64.whl (8.2 MB)
+     ---------------------------------------- 8.2/8.2 MB 6.0 MB/s eta 0:00:00
+Collecting pandas==1.1.5
+  Downloading pandas-1.1.5-cp37-cp37m-win_amd64.whl (8.7 MB)
+     ---------------------------------------- 8.7/8.7 MB 6.1 MB/s eta 0:00:00
+Collecting scikit-learn<0.23.0,>=0.19.0
+  Downloading scikit_learn-0.22.2.post1-cp37-cp37m-win_amd64.whl (6.5 MB)
+     ---------------------------------------- 6.5/6.5 MB 5.1 MB/s eta 0:00:00
+Collecting keras2onnx<=1.6.0,>=1.4.0
+  Downloading keras2onnx-1.6.0-py3-none-any.whl (219 kB)
+     -------------------------------------- 219.8/219.8 kB 4.5 MB/s eta 0:00:00
+Collecting sklearn-pandas<=1.7.0,>=1.4.0
+  Downloading sklearn_pandas-1.7.0-py2.py3-none-any.whl (10 kB)
+Collecting onnxruntime<=1.11.1,>=1.3.0
+  Downloading onnxruntime-1.11.1-cp37-cp37m-win_amd64.whl (5.5 MB)
+     ---------------------------------------- 5.5/5.5 MB 4.2 MB/s eta 0:00:00
+Collecting azureml-training-tabular~=1.47.0
+  Downloading azureml_training_tabular-1.47.0-py3-none-any.whl (1.7 MB)
+     ---------------------------------------- 1.7/1.7 MB 5.5 MB/s eta 0:00:00
+Collecting dill<0.4.0,>=0.2.8
+  Downloading dill-0.3.6-py3-none-any.whl (110 kB)
+     -------------------------------------- 110.5/110.5 kB 3.2 MB/s eta 0:00:00
+Collecting boto3<=1.20.19
+  Downloading boto3-1.20.19-py3-none-any.whl (131 kB)
+     -------------------------------------- 131.8/131.8 kB 8.1 MB/s eta 0:00:00
+Collecting nimbusml<=1.8.0,>=1.7.1
+  Downloading nimbusml-1.8.0-cp37-none-win_amd64.whl (59.1 MB)
+     ---------------------------------------  59.1/59.1 MB 4.7 MB/s eta 0:00:01
