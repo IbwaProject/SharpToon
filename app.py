@@ -170,6 +170,9 @@ def result2():
 
 @app.route('/run_model2')
 def run_model2():
+   # option_cartoon.html 에서 불러온 option 값
+   option = request.args.get("option")
+
    mainPy2.main() 
    mainPy3.main() 
    mainPy4.cartoonize()
