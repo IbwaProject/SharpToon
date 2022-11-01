@@ -22,7 +22,7 @@ function takeSnapshot(div) {
 
    var a = document.createElement("a");
    a.href = myCanvasElement.toDataURL();
-   var fileName = "imageTemp.jpg";
+   var fileName = "imageTemp1.jpg";
   //  var filepath = "{{url_for('static', filename = 'images/input/imageTemp1.jpg')}}";
   //  a.setAttribute('href', filepath);
    a.setAttribute("download", fileName);
