@@ -164,6 +164,7 @@ else if(textbuttonclick % 2){
 
          // 텍스트 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
          textbox.onmousedown = function(){
+            startDrag(event, this);
             if(event.button == "2")
                targetDiv.removeChild(event.srcElement);
                //document.body.removeChild(event.srcElement);
