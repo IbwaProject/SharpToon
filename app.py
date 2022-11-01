@@ -173,9 +173,12 @@ def run_model2():
    # option_cartoon.html 에서 불러온 option 값
    option = request.args.get("option")
 
-   mainPy2.main() 
-   mainPy3.main() 
-   mainPy4.cartoonize()
+   if option=="0":
+      mainPy4.cartoonize()
+   elif option=="1":
+      mainPy2.main()
+   else:
+      mainPy3.main()
    return render_template('result2.html')
 
 ## 웹에서 사용할 APIs 
