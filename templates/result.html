@@ -56,6 +56,7 @@
          <fieldset>
             <legend> 텍스트 추가 </legend>
             작성할 내용
+            <span id="spanStrWidth" style="visibility:hidden; position:absolute; top:-10000; font-size:9pt;"></span>
             <input id = "input_text" type = "text" value = "">
             <button id = "btn_add_text" onclick = "maketext_btn()" style = "border-color: white; border-width : 6px">
                TEXT
@@ -106,6 +107,26 @@
       }
    }
 
+   function calcStrWidth() 
+   {	
+      $("#spanStrWidth").text($("#input_text").val());
+      var text_width = $("#spanStrWidth").outerWidth();
+      return text_width
+   }
+
+   var key_delete = false;
+   
+   window.addEventListener("keydown", (e) => {
+       if(e.keyCode==18) {
+         key_delete=true;
+       }
+   });
+
+   window.addEventListener("keyup", (e) => {
+      key_delete=false;
+   });
+
+
    function make_balloon_text()
    {   
       // 클릭된 좌표값
@@ -136,7 +157,7 @@
          // 이미지 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
          img.onmousedown = function(){
             startDrag(event, this);
-            if(event.button == "2")
+            if(event.button == "0" && key_delete == true)
                targetDiv.removeChild(event.srcElement);
                //document.body.removeChild(event.srcElement);
          }
@@ -147,26 +168,30 @@
 
       else if(textbuttonclick % 2){
          // 텍스트 태그 생성
-         var textbox = document.createElement("h3");
+         var textbox = document.createElement("p");
          var text = document.createTextNode(input_text);
+         var text_width = calcStrWidth();
+         
          textbox.appendChild(text);
 
          console.log(x);
 
          //텍스트 태그 좌표 지정
          textbox.style.position= "absolute";
-         textbox.style.left = (x-15) + "px";
-         textbox.style.top = (y-17) + "px";
+         textbox.style.margin = 0 + "px";
+         textbox.style.fontWeight = "bold";
+         textbox.style.left = (x- ( text_width / 2)) + "px";
+         textbox.style.top = (y - (18 / 2)) + "px";
 
          // <body> 자식으로 추가
          //document.body.appendChild(textbox);
          var targetDiv = document.getElementById('screenshot');
          targetDiv.appendChild(textbox);
          textbox.style.zIndex = 3;
-
-         // 텍스트 태그에 이벤트 추가(오른쪽 마우스 클릭 시 삭제)
+         
+         // 텍스트 태그에 이벤트 추가(alt + click)
          textbox.onmousedown = function(){
-            if(event.button == "2")
+            if(event.button == "0" && key_delete == true)
                targetDiv.removeChild(event.srcElement);
                //document.body.removeChild(event.srcElement);
          }
