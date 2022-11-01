@@ -9,7 +9,9 @@
 
 <body onscroll="scroll()">
 	<div class="layerPopup">
-		<div class="spinner"></div>
+		<div class="spinner">
+			<img class="loading" id="loading" src="{{url_for('static',filename='images/loadingCartoon.gif')}}">
+		</div>
 	</div>
 
 	<div class = "page">
@@ -44,9 +46,10 @@
 </html>
 
 <script>
+var nextImage = document.getElementById("next-image");
+var selectImage = document.getElementById("select-image");
 var decodename_hair = '{{ decodename[0] }}';
 window.onload = function() {
-	var selectImage = document.getElementById("select-image");
     let getLink = window.location.search;
     let getOption = getLink.split('=');
     let getOnlyOption = getOption[1];
@@ -61,15 +64,16 @@ window.onresize = function(event) {
 }
 
 function drawImg(event) {
-	var nextImage = document.getElementById("next-image");
-	var selectImage = document.getElementById("select-image");
 	nextImage.style.display='block';
-		
 	nextImage.src = "{{url_for('static', filename = 'images/button_Bottom_img.png')}}";
-		
+	var loadingImg = document.getElementById("loading");
+	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth;	
 	if(selectImage.style.display!='none') {
 		nextImage.onclick=null;
 		nextImage.addEventListener("click", function() {
+			loadingImg.style.marginLeft=windowWidth/2 - 200 +"px";
+			loadingImg.style.marginTop = windowHeight/2 - 200 +"px";
 			document.getElementsByClassName('layerPopup')[0].style.display='block';
 			let CartoonOption = event.target.value;
 			window.location.href = "/run_model2?option=" + CartoonOption;
