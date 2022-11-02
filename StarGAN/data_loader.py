@@ -60,7 +60,7 @@ class CelebA(data.Dataset):
         """Return one image and its corresponding attribute label."""
         dataset = self.train_dataset if self.mode == 'train' else self.test_dataset
         filename, label = dataset[index]
-        image = Image.open(os.path.join(self.image_dir, filename))
+        image = Image.open(os.path.join(self.image_dir, filename)).convert('RGB')
 
         img_resize = image.resize((200, 200),Image.LANCZOS)
 
