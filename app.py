@@ -127,6 +127,10 @@ def select_image2():
 def Settings():
    return render_template('Settings.html')
 
+@app.route('/camera2')
+def camera2():
+   return render_template('camera2.html')  
+
 @app.route('/camera')
 def camera():
    return render_template('camera.html')  

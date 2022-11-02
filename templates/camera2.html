@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Camera</title>
+	<link rel="stylesheet" href="../static/css/camera.css">
+</head>
+
+<body>
+	<div class = "page">
+	<div class = "left_box">
+		<div style="padding: 0px 0px 0px 20px;" class="Photo">
+			
+		</div>
+	</div>
+
+	<div style="padding: 50px 0px 0px 20px;" class = "main_box">
+		<div class="main_screen">
+			<video id="myVideo" width="400" height="400" style="border: 1px solid #ddd;"></video>
+			<canvas id="myCanvas" width="200" height="200" style="border: 1px solid #ddd;"></canvas><br>
+
+			<button class = "Photo-Button" onclick="{getVideo()}">get Video</button>
+			<button class = "Photo-Button" onclick="{takeSnapshot()}">get Picture</button><br>
+
+			<script src="../static/js/webcam2.js"></script>
+		</div>
+	</div>
+	</div>
+
+	<div class = "button_Change">
+		<img class="button_Change_img" onClick="location.href='/option_cartoon'" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}">
+	</div>
+</body>
+</html>
