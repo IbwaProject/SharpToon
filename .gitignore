@@ -1,6 +1,9 @@
 # CartoonGan 폴더
 CartoonGan/
 
+#env2
+env2/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
