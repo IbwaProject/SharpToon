@@ -176,7 +176,7 @@ def result_download():
    while(True) :
       if(os.path.exists("static/images/input/ResultImage.png")) : break  
    shutil.copy("static/images/input/ResultImage.png", "static/images/download/ResultImage.png")
-   return redirect('result.html')
+   return render_template('result.html')
    
 @app.route("/result2")
 def result2():
