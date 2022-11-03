@@ -297,9 +297,10 @@
             const textToImg = canvas.toDataURL();
             var screen = document.getElementById("screenshot");
             var a = document.createElement('a');
-               a.download = "ResultImage";
-               a.href = textToImg;
-               a.click();
+            a.download = "ResultImage";
+            a.href = textToImg;
+            a.click();
+            window.location.href = "/result_download"
          });
       });
    });
