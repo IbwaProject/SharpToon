@@ -34,7 +34,8 @@
              <br><br>
              <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
-             </div>
+               <img src="{{url_for('static', filename = 'images/completeImage.png')}}" onerror = "this.style.display='none'" id = "complete-image" height = "100" width = "100"></img>
+            </div>
              <button class = "Photo-Button" onClick="location.href='/main'">메인으로</button>
          </div>
       </div>

@@ -186,6 +186,7 @@ def result2():
 
 @app.route('/run_model2')
 def run_model2():
+   os.rename("static/images/completeImage.png", "static/images/cmImage.png")
    # option_cartoon.html 에서 불러온 option 값
    option = request.args.get("option")
 
