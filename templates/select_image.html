@@ -22,11 +22,11 @@
                 <div class="inner" id="inner">드래그하거나 클릭해서 업로드</div>
                 </label>
                 <input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
-                <p class="preview-title">preview</p>
+                <p class="preview-title"></p>
                 <div class="preview" id="preview"></div>
-                <button class = "Photo-Button" onClick="location.href='/option_hair'">선택하기</button>
 				<!--button class = "Photo-Button" onClick="makeResult()">선택하기</button-->
-                <button class = "Photo-Button" onClick="location.href='/camera'">사진찍기</button>
+                <button class = "Photo-Button" onClick="location.href='/camera'">웹캠 사용</button>
+                <button class = "Photo-Button" onClick="location.href='/option_hair'">선택 완료</button>
 				<script src="{{url_for('static', filename='js/select_image.js')}}"></script>
             </main>
         </div>

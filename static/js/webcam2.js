@@ -13,6 +13,8 @@ function getVideo(){
    function(error) {
      alert('webcam not working');
   });
+  
+  document.getElementById("takepicture").style.display="inline";
 }
   
 function takeSnapshot(div) {

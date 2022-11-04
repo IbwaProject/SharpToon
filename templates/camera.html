@@ -20,8 +20,8 @@
 			<video id="myVideo" width="400" height="400" style="border: 1px solid #ddd;"></video>
 			<canvas id="myCanvas" width="200" height="200" style="border: 1px solid #ddd;"></canvas><br>
 
-			<button class = "Photo-Button" onclick="{getVideo()}">get Video</button>
-			<button class = "Photo-Button" onclick="{takeSnapshot()}">get Picture</button><br>
+			<button class = "Photo-Button" onclick="{getVideo()}">웹캠 활성화</button>
+			<button class = "Photo-Button" id="takepicture" style="display: none;"  onclick="{takeSnapshot()}">사진찍기</button><br>
 
 			<script src="../static/js/webcam.js"></script>
 		</div>
@@ -32,4 +32,5 @@
 		<img class="button_Change_img" onClick="location.href='/option_hair'" src="{{url_for('static', filename = 'images/button_Bottom_img.png')}}">
 	</div>
 </body>
+
 </html>
