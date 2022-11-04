@@ -245,6 +245,8 @@
       //   return false;
       //}
       //console.log(event.y);
+      textbuttonclick = 0;
+      text_btn.style.borderColor = 'white';
        var e_obj = window.event? window.event : e;
        var dmvx = parseInt(e_obj.clientX + img_L);
        var dmvy = parseInt(e_obj.clientY + img_T);
@@ -256,7 +258,6 @@
    // 드래그 시작
    function startDrag(e, obj){
       balloonbuttonclick = 0;
-      textbuttonclick = 0;
        targetObj = obj;
        var e_obj = window.event? window.event : e;
        img_L = getLeft(obj) - e_obj.clientX;
