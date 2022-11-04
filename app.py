@@ -166,11 +166,13 @@ def result():
 @app.route('/run_model')
 def run_model():
    mainPy.main()
+   os.rename("static/images/completeImage.png", "static/images/cmImage.png")
    return render_template('result.html')
 
 @app.route('/result_download')
 def result_download():
    download_dir = "static/images/download"
+   os.rename("static/images/cmImage.png", "static/images/completeImage.png")
    if not os.path.exists(download_dir):
       os.makedirs(download_dir)
    while(True) :
