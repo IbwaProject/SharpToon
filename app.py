@@ -167,6 +167,16 @@ def result():
 def run_model():
    mainPy.main()
    return render_template('result.html')
+
+@app.route('/result_download')
+def result_download():
+   download_dir = "static/images/download"
+   if not os.path.exists(download_dir):
+      os.makedirs(download_dir)
+   while(True) :
+      if(os.path.exists("static/images/input/ResultImage.png")) : break  
+   shutil.copy("static/images/input/ResultImage.png", "static/images/download/ResultImage.png")
+   return render_template('result.html')
    
 @app.route("/result2")
 def result2():
