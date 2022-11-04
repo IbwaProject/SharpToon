@@ -34,6 +34,7 @@
             <br><br>
             <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
+               <img src="{{url_for('static', filename = 'images/completeImage.png')}}" onerror = "this.style.display='none'" id = "complete-image" height = "100" width = "100"></img>
             </div>
             <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
                <input type="hidden" name = "decodename"/>
@@ -244,6 +245,8 @@
       //   return false;
       //}
       //console.log(event.y);
+      textbuttonclick = 0;
+      text_btn.style.borderColor = 'white';
        var e_obj = window.event? window.event : e;
        var dmvx = parseInt(e_obj.clientX + img_L);
        var dmvy = parseInt(e_obj.clientY + img_T);
@@ -300,7 +303,7 @@
             a.download = "ResultImage";
             a.href = textToImg;
             a.click();
-            window.location.href = "/result_download"
+            window.location.href = "/result_download?option=" + decodeName;
          });
       });
    });
