@@ -34,7 +34,7 @@
             <br><br>
             <div align="right">
                <img src="{{url_for('static', filename = 'images/download.png')}}" alt="My Image" height="100" width="100" id="download">
-               <img src="{{url_for('static', filename = 'images/completeImage.png')}}" onerror = "this.style.display='none'" id = "complete-image" height = "100" width = "100"></img>
+               <img src="{{url_for('static', filename = 'images/completeImage.png')}}" onerror = "this.style.display='none'" id = "complete-image" height = "100" width = "100" opacity="100"></img>
             </div>
             <form method = "GET" name = "gocartoon_form" action ="/option_cartoon">
                <input type="hidden" name = "decodename"/>
@@ -87,6 +87,10 @@
       if(decodeName=="1") result.src="{{url_for('static', filename = 'images/result/imgBlack.jpg')}}"
       else if(decodeName=="2") result.src="{{url_for('static', filename = 'images/result/imgBlond.jpg')}}"
       else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/result/imgBrown.jpg')}}"
+
+      var check = document.getElementById("complete-image");
+      check.animate({opacity: "0"}, 1000);
+      setTimeout(() => check.style.opacity = "0", 1000);
    }
 
    function makeballoon_btn()
