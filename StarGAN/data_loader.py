@@ -5,6 +5,7 @@ from PIL import Image
 import torch
 import os
 import random
+import cv2
 
 
 class CelebA(data.Dataset):
@@ -62,8 +63,14 @@ class CelebA(data.Dataset):
         filename, label = dataset[index]
         image = Image.open(os.path.join(self.image_dir, filename)).convert('RGB')
 
-        img_resize = image.resize((200, 200),Image.LANCZOS)
+        #이미지 해상도 향상#
+        #sr = cv2.dnn_superres.DnnSuperResImp1_create()
+        #sr.readModel('models/EDSR_x3.pb')
+        #sr.setModel('edsr',3)
+        #result = sr.upsample(image)
 
+        img_resize = image.resize((200, 200),Image.LANCZOS)
+        
         return self.transform(img_resize), torch.FloatTensor(label)
 
     def __len__(self):
