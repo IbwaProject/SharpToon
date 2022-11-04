@@ -193,6 +193,18 @@ def result_download():
       if(os.path.exists("static/images/input/ResultImage.png")) : break  
    shutil.copy("static/images/input/ResultImage.png", "static/images/download/ResultImage.png")
    return render_template('result.html')
+
+@app.route('/result_download2')
+def result_download2():
+   download_dir = "static/images/download"
+   if(os.path.exists("static/images/cmImage.png")):
+      os.rename("static/images/cmImage.png", "static/images/completeImage.png")
+   if not os.path.exists(download_dir):
+      os.makedirs(download_dir)
+   while(True) :
+      if(os.path.exists("static/images/input/ResultImage.png")) : break  
+   shutil.copy("static/images/input/ResultImage.png", "static/images/download/ResultImage.png")
+   return render_template('result2.html')
    
 @app.route("/result2")
 def result2():

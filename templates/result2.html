@@ -71,13 +71,14 @@
       var text_btn = document.getElementById("btn_add_text");
       var balloon_btn = document.getElementById("btn_add_balloon");
       var input_text = ""
+      let decodeName;
 
    window.onload = function() {
       var result = document.getElementById("resultImg");
       let getLink = window.location.search;
       let getOption = getLink.split('=');
       let getOnlyOption = getOption[1];
-      let decodeName = decodeURI(getOnlyOption)
+      decodeName = decodeURI(getOnlyOption)
       
       if (decodeName=="0") result.src="{{url_for('static', filename = 'images/b_iu_whitebox.jpg')}}"
       else if(decodeName=="1") result.src="{{url_for('static', filename = 'images/b_iu_cartoon.jpg')}}"
@@ -85,6 +86,10 @@
       else if(decodeName=="3") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan1.jpg')}}"
       else if(decodeName=="4") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan2.jpg')}}"
       else if(decodeName=="5") result.src="{{url_for('static', filename = 'images/b_iu_cartoongan3.jpg')}}"
+
+      var check = document.getElementById("complete-image");
+      check.animate({opacity: "0"}, 1000);
+      setTimeout(() => check.style.opacity = "0", 1000);
    }
 
    function makeballoon_btn()
@@ -162,7 +167,7 @@
             make_balloon_text()
          }
       }
-else if(textbuttonclick % 2){
+      else if(textbuttonclick % 2){
          // 텍스트 태그 생성
          var textbox = document.createElement("p");
          var text = document.createTextNode(input_text);
@@ -292,9 +297,10 @@ else if(textbuttonclick % 2){
             const textToImg = canvas.toDataURL();
             var screen = document.getElementById("screenshot");
             var a = document.createElement('a');
-               a.download = "ResultImage";
-               a.href = textToImg;
-               a.click();
+            a.download = "ResultImage";
+            a.href = textToImg;
+            a.click();
+            window.location.href = "/result_download2?option=" + decodeName;
          });
       });
    });
