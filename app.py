@@ -117,10 +117,22 @@ def option_cartoon():
 
 @app.route('/select_image')
 def select_image():
+   celeba_image_dir = 'static/images/input'
+   result_dir = 'static/images/result'
+   if os.path.exists(celeba_image_dir) :
+      shutil.rmtree(celeba_image_dir)
+   if os.path.exists(result_dir) :
+      shutil.rmtree(result_dir)
    return render_template('select_image.html')
 
 @app.route('/select_image2')
 def select_image2():
+   celeba_image_dir = 'static/images/input'
+   result_dir = 'static/images/result'
+   if os.path.exists(celeba_image_dir) :
+      shutil.rmtree(celeba_image_dir)
+   if os.path.exists(result_dir) :
+      shutil.rmtree(result_dir)
    return render_template('select_image2.html')
 
 @app.route('/Settings')
