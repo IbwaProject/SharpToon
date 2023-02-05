@@ -27,9 +27,6 @@
 
 </details>
 
-## ✔ 적용 사례
-<img src="https://user-images.githubusercontent.com/69100145/216751639-d6319e90-1f58-4825-bb84-c855d3c4cbd8.png" height="300"/>
-
 ## 🛠 핵심 기능
 ### 사용자 헤어스타일 변환
 - 검정, 금발, 갈색 중 원하는 스타일을 선택하는 웹페이지
